@@ -1,0 +1,6 @@
+<app-redoc-viewer *ngIf="data?.reference?.type === DocType.OpenApiRedoc" [data]="data"></app-redoc-viewer>
+<app-swagger-viewer *ngIf="data?.reference?.type === DocType.OpenApiSwagger" [data]="data"></app-swagger-viewer>
+<app-html-viewer *ngIf="data?.reference?.type === DocType.Html" [data]="data"></app-html-viewer>
+<app-markdown-viewer *ngIf="data?.reference?.type === DocType.Markdown" [data]="data"></app-markdown-viewer>
+<app-iframe-viewer *ngIf="data?.reference?.type === DocType.Iframe" [data]="data"></app-iframe-viewer>
+<app-not-found *ngIf="notFound"></app-not-found>

@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "name": "Redoc",
+    "group": "OpenApi",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "redoc",
+      "openapi"
+    ],
+    "reference": {
+      "title": "Redoc",
+      "source": "/docs/my-api.openapi.json",
+      "type": "openapi-redoc"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Swagger",
+    "group": "OpenApi",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "swagger",
+      "openapi"
+    ],
+    "reference": {
+      "title": "Swagger",
+      "source": "/docs/my-api.openapi.yaml",
+      "type": "openapi-swagger"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "HTML",
+    "group": "Texto",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "html"
+    ],
+    "reference": {
+      "title": "HTML",
+      "source": "/docs/my-api/index.html",
+      "type": "html"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Markdown",
+    "group": "Texto",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "markdown",
+      "texto"
+    ],
+    "reference": {
+      "title": "Markdown",
+      "source": "/docs/my-api.md",
+      "type": "markdown"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Iframe",
+    "group": "Web",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "iframe"
+    ],
+    "reference": {
+      "title": "Iframe",
+      "source": "https://getbootstrap.com/docs/5.0/getting-started/introduction/",
+      "type": "iframe"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Link",
+    "group": "Web",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "tags": [
+      "link"
+    ],
+    "reference": {
+      "title": "Link Web",
+      "source": "https://getbootstrap.com/docs/5.0/getting-started/introduction/",
+      "type": "link"
+    },
+    "actions": [
+      {
+        "name": "Google Chat",
+        "icon": "comment",
+        "url": "https://www.google.com"
+      },
+      {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://www.google.com"
+      }
+    ]
+  }
+]

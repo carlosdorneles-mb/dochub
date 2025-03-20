@@ -1,0 +1,91 @@
+<div class="uk-container uk-container-expand">
+  <h1><b>Documentações</b></h1>
+
+  <div class="uk-margin dh-search">
+    <form class="uk-search uk-search-default">
+      <span uk-search-icon></span>
+      <input (input)="onSearch($event)" class="uk-search-input" type="search" placeholder="Buscar documentação"
+             aria-label="Search">
+    </form>
+  </div>
+
+  <div *ngIf="data.total === 0" class="uk-text-center uk-margin-large-top" style="width: 100%;">
+    <img src="images/not-found.png" alt="Not Found">
+    <h3>Nada encontrado</h3>
+    <p>Nenhum documentação foi encontrada com o termo informado.</p>
+  </div>
+
+  <div *ngIf="data.total > 0">
+    <table class="uk-table uk-table-middle uk-table-responsive uk-table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Grupo</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of data.items">
+        <td>{{ item.id }}</td>
+        <td><b>{{ item.name }}</b></td>
+        <td>{{ item.group }}</td>
+        <td>{{ item.description | slice:0:240 }}</td>
+        <td>
+          <div class="uk-button-group">
+            <button
+              *ngIf="item.reference.type !== DocType.Link"
+              [routerLink]="['/docs', item.id ]"
+              class="uk-button uk-button-secondary uk-button-small"
+              type="button"
+              uk-tooltip="Acessar documentação"
+            >
+              Acessar
+            </button>
+            <a
+              *ngIf="item.reference.type === DocType.Link"
+              [href]="item.reference.source"
+              target="_blank"
+              class="uk-button uk-button-secondary uk-button-small"
+              type="button"
+              uk-tooltip="Acessar documentação"
+            >
+              Acessar
+            </a>
+
+            <div *ngIf="item.actions && item.actions.length > 0" class="uk-inline">
+              <button class="uk-button uk-button-secondary uk-button-small" type="button" aria-label="Toggle Dropdown">
+                <span uk-icon="icon: triangle-down"></span>
+              </button>
+
+              <div uk-dropdown="mode: click; target: !.uk-button-group;" class="uk-padding-remove">
+                <ul class="uk-nav uk-dropdown-nav">
+                  <li
+                    *ngFor="let action of item.actions"
+                    class="uk-button uk-button-tertiary uk-button-small"
+                    style="width: 100%"
+                  >
+                    <a [href]="action.url" target="_blank">
+                      <span *ngIf="action.icon" [attr.uk-icon]="'icon: ' + action.icon"
+                            style="padding-right: 5px"></span>
+                      {{ action.name }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="data.pageTotal > 1 && data.page < data.pageTotal" class="uk-text-center uk-margin-medium"
+         style="width: 100%;">
+      <button class="uk-button uk-button-secondary uk-button-small" type="button" (click)="loadMore()">
+        Mostrar mais <span uk-icon="icon: triangle-down"></span>
+      </button>
+    </div>
+  </div>
+</div>

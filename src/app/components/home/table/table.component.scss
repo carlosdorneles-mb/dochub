@@ -1,0 +1,17 @@
+.uk-search-default {
+  width: 100% !important;
+}
+
+.uk-search-input {
+  border-radius: 8px;
+  outline: 1px solid;
+
+  &:focus {
+    outline: 2px solid;
+    border-color: black !important;
+  }
+}
+
+.uk-search-icon {
+  color: black !important;
+}
