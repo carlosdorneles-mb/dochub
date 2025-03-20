@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o corpo ocupe toda a altura da tela */
+  margin: 0; /* Remove margens padrão */
+}
+
+app-root {
+  flex: 1; /* Faz o componente principal ocupar o espaço restante */
+}
+
+.uk-navbar-left {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #c8cacc !important;
+  }
+}
+
+.uk-navbar-right {
+  .uk-active a {
+    color: #ffffff !important;
+    font-weight: bold !important;
+  }
+
+  a {
+    color: #ffffff !important;
+  }
+}

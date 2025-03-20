@@ -1,0 +1,101 @@
+<div *ngIf="tabTypeSelected === TabType.All" class="uk-margin dh-search">
+  <form class="uk-search uk-search-default">
+    <span uk-search-icon></span>
+    <input
+      (input)="onSearchByEvent($event)"
+      [value]="searchFilter"
+      class="uk-search-input"
+      type="search"
+      placeholder="Buscar documentação"
+      aria-label="Search">
+  </form>
+</div>
+
+<app-loading [isLoading]="isLoadingTable" [loadingCentralized]="false"></app-loading>
+
+<div *ngIf="!isLoadingTable && isNotFoundData" class="uk-text-center uk-margin-large"
+     style="width: 100%;">
+  <img src="images/not-found.png" alt="Not Found">
+  <h3>Nada encontrado</h3>
+  <p *ngIf="tabTypeSelected === TabType.Favorite">Você não tem nenhuma documentação nos favoritos.</p>
+  <p *ngIf="tabTypeSelected === TabType.All">Nenhuma documentação foi encontrada com o termo informado.</p>
+</div>
+
+<div *ngIf="!isLoadingTable && !isNotFoundData">
+  <table class="uk-table uk-table-middle uk-table-responsive uk-table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Grupo</th>
+      <th>Descrição</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of data.items">
+      <td>
+        <a
+          (click)="managerFavorite(item.id)"
+          [class.uk-active]="favoriteIds.includes(item.id)"
+          href="#"
+          class="favorite"
+          [attr.uk-tooltip]="favoriteIds.includes(item.id) ? 'Desfavoritar' : 'Favoritar'"
+          uk-icon="star">
+        </a>
+      </td>
+      <td>{{ item.id }}</td>
+      <td><b>{{ item.name }}</b></td>
+      <td>{{ item.group }}</td>
+      <td>{{ item.description | slice:0:240 }}</td>
+      <td>
+        <div class="uk-button-group">
+          <button
+            [routerLink]="['/docs', item.id ]"
+            class="uk-button uk-button-secondary uk-button-small"
+            type="button"
+            uk-tooltip="Acessar documentação"
+          >
+            Acessar
+          </button>
+
+          <div *ngIf="item.actions && item.actions.length > 0" class="uk-inline">
+            <button class="uk-button uk-button-secondary uk-button-small" type="button" aria-label="Toggle Dropdown">
+              <span uk-icon="icon: triangle-down"></span>
+            </button>
+
+            <div uk-dropdown="mode: click; target: !.uk-button-group;" class="uk-padding-remove">
+              <ul class="uk-nav uk-dropdown-nav">
+                <li
+                  *ngFor="let action of item.actions"
+                  class="uk-button uk-button-tertiary uk-button-small"
+                  style="width: 100%"
+                >
+                  <a [href]="action.url" target="_blank">
+                    <span
+                      *ngIf="action.icon"
+                      [attr.uk-icon]="'icon: ' + action.icon"
+                      style="padding-right: 5px">
+                    </span>
+                    {{ action.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="data.pageTotal > 1 && data.page < data.pageTotal" class="uk-text-center uk-margin-medium"
+       style="width: 100%;">
+    <app-loading [isLoading]="isLoadingLoadMore" [loadingCentralized]="false"></app-loading>
+    <button *ngIf="!isLoadingLoadMore" class="uk-button uk-button-secondary uk-button-small" type="button"
+            (click)="loadMore()">
+      Mostrar mais <span uk-icon="icon: triangle-down"></span>
+    </button>
+  </div>
+</div>

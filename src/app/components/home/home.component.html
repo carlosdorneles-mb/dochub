@@ -1,0 +1,26 @@
+<app-section></app-section>
+
+<div class="uk-container uk-container-expand">
+  <h1><b>Documentações</b></h1>
+
+  <ul uk-tab>
+    <li [class.uk-active]="tabSelected === TabType.All">
+      <a href="#" (click)="selectTab(TabType.All)">Todas</a>
+    </li>
+    <li [class.uk-active]="tabSelected === TabType.Favorite">
+      <a href="#" (click)="selectTab(TabType.Favorite)">Favoritos</a>
+    </li>
+  </ul>
+
+  <div *ngIf="tabSelected === TabType.All">
+    <p>Todas as documentações reunidas em um só lugar.</p>
+    <app-table [tabTypeSelected]="tabSelected"></app-table>
+  </div>
+
+  <div *ngIf="tabSelected === TabType.Favorite">
+    <p>As suas documentações favoritas ficam salvas aqui.</p>
+    <app-table [tabTypeSelected]="tabSelected"></app-table>
+  </div>
+</div>
+
+<app-footer></app-footer>

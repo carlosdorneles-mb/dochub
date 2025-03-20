@@ -1,0 +1,53 @@
+<header style="position: sticky; top: 0; z-index: 1000;">
+  <div class="uk-navbar-container dh-navbar-container uk-navbar-sticky">
+    <div class="uk-container uk-container-expand">
+      <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+
+        <div class="uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="docs/">
+            <img src="images/logo.png" width="150" alt="Logo">
+          </a>
+        </div>
+
+        <div class="uk-navbar-right">
+          <div>
+            <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
+            <a class="uk-navbar-toggle" href uk-search-icon></a>
+            <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+              <form class="uk-search uk-search-navbar uk-width-1-1" action="search/" method="get">
+                <input
+                  class="uk-search-input"
+                  type="search"
+                  placeholder="Buscar documentação"
+                  aria-label="Search"
+                  name="q" autofocus>  <!-- eslint-disable-line @angular-eslint/template/no-autofocus -->
+              </form>
+            </div>
+          </div>
+
+          <div *ngIf="data" class="uk-inline">
+            <button class="uk-button uk-button-secondary" type="button">
+              {{ data.reference.title || data.name }} <span uk-icon="icon: triangle-down"></span>
+            </button>
+
+            <div uk-dropdown class="uk-padding-remove">
+              <ul class="uk-nav uk-dropdown-nav">
+                <li
+                  *ngFor="let action of data.actions"
+                  class="uk-button uk-button-tertiary uk-button-small"
+                  style="width: 100%"
+                >
+                  <a [href]="action.url" target="_blank">
+                    <span *ngIf="action.icon" [attr.uk-icon]="'icon: ' + action.icon" style="padding-right: 5px"></span>
+                    {{ action.name }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

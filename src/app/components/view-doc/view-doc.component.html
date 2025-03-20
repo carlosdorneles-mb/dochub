@@ -1,0 +1,11 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<div *ngIf="!isLoading">
+  <app-redoc-viewer *ngIf="data?.reference?.type === DocTypeEnum.OpenApiRedoc" [data]="data"></app-redoc-viewer>
+  <app-swagger-viewer *ngIf="data?.reference?.type === DocTypeEnum.OpenApiSwagger" [data]="data"></app-swagger-viewer>
+  <app-markdown-viewer *ngIf="data?.reference?.type === DocTypeEnum.Markdown" [data]="data"></app-markdown-viewer>
+  <app-iframe-viewer *ngIf="data?.reference?.type === DocTypeEnum.Iframe" [data]="data"></app-iframe-viewer>
+  <app-iframe-viewer *ngIf="data?.reference?.type === DocTypeEnum.Html" [data]="data"></app-iframe-viewer>
+  <app-link-viewer *ngIf="data?.reference?.type === DocTypeEnum.Link" [data]="data"></app-link-viewer>
+  <app-not-found *ngIf="isNotFound"></app-not-found>
+</div>

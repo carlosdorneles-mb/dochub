@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<router-outlet></router-outlet>
+
+<div>
+  <button *ngIf="showTopButton" (click)="scrollToTop()" class="uk-button uk-button-secondary dh-to-top dh-circular"
+          type="button">
+    <span uk-icon="icon: chevron-up"></span>
+  </button>
+</div>
