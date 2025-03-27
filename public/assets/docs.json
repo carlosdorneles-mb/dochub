@@ -11,7 +11,7 @@
     "reference": {
       "title": "Redoc",
       "type": "openapi-redoc",
-      "source": "assets/docs/my-api.openapi.json"
+      "source": "./assets/docs/my-api.openapi.json"
     },
     "actions": [
       {
@@ -38,7 +38,7 @@
     "reference": {
       "title": "Swagger",
       "type": "openapi-swagger",
-      "source": "assets/docs/my-api.openapi.yaml"
+      "source": "./assets/docs/my-api.openapi.yaml"
     },
     "actions": [
       {
@@ -64,7 +64,7 @@
     "reference": {
       "title": "HTML",
       "type": "html",
-      "source": "assets/docs/my-api/index.html"
+      "source": "./assets/docs/my-api/index.html"
     },
     "actions": [
       {
@@ -91,7 +91,7 @@
     "reference": {
       "title": "Markdown",
       "type": "markdown",
-      "source": "assets/docs/my-api.md"
+      "source": "./assets/docs/my-api.md"
     },
     "actions": [
       {

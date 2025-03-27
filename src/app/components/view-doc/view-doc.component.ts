@@ -46,11 +46,11 @@ export class ViewDocComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.activatedRoute.snapshot.params['id']);
 
-    this.fetchIDoc(id);
+    this.fetchDoc(id);
   }
 
-  fetchIDoc(id: number): void {
-    this.readFileService.fetchIDocById(id)
+  fetchDoc(id: number): void {
+    this.readFileService.fetchDocById(id)
       .subscribe((data: IDoc | undefined) => {
         this.isLoading = false;
 

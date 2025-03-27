@@ -12,12 +12,12 @@ export class ReadFileService {
   constructor(private http: HttpClient) {
   }
 
-  private fetchIDocs() {
+  private fetchDocs() {
     return this.http.get<IDoc[]>('assets/docs.json');
   }
 
-  fetchPaginatedIDocs(page: number, pageSize: number, filter: string): Observable<IDocPagination> {
-    return this.fetchIDocs().pipe(
+  fetchPaginatedDocs(page: number, pageSize: number, filter: string): Observable<IDocPagination> {
+    return this.fetchDocs().pipe(
       map(docs => docs.filter(
         doc =>
           doc.id.toString().includes(filter)
@@ -40,7 +40,7 @@ export class ReadFileService {
   }
 
   fetchPaginatedByIds(page: number, pageSize: number, ids: number[]): Observable<IDocPagination> {
-    return this.fetchIDocs().pipe(
+    return this.fetchDocs().pipe(
       map(docs => docs.filter(
         doc => ids.length > 0 && ids.includes(doc.id)
       )),
@@ -58,8 +58,8 @@ export class ReadFileService {
     );
   }
 
-  fetchIDocById(id: number): Observable<IDoc | undefined> {
-    return this.fetchIDocs().pipe(
+  fetchDocById(id: number): Observable<IDoc | undefined> {
+    return this.fetchDocs().pipe(
       map(docs => docs.find(doc => doc.id === id))
     );
   }

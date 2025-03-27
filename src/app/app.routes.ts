@@ -6,10 +6,9 @@ import {NotFoundComponent} from '@components/not-found/not-found.component';
 import {SearchComponent} from '@components/search/search.component';
 
 export const routes: Routes = [
-  {path: 'docs', component: HomeComponent},
+  {path: '', component: HomeComponent},
   {path: 'docs/:id', component: ViewDocComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'home', redirectTo: 'docs', pathMatch: 'full'},
-  {path: '', redirectTo: 'docs', pathMatch: 'full'},
+  {path: 'not-found', component: NotFoundComponent},
   {path: '**', component: NotFoundComponent},
 ];

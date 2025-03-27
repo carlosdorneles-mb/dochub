@@ -23,10 +23,10 @@ export class RedocViewerComponent implements AfterViewInit {
   @Input() data: IDoc = {} as IDoc;
 
   ngAfterViewInit() {
-    this.loadIDoc();
+    this.loadDoc();
   }
 
-  loadIDoc() {
+  loadDoc() {
     const redocScript = document.createElement('script');
 
     redocScript.src = 'https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js';

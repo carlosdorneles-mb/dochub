@@ -106,6 +106,14 @@
   border-color: var(--color) !important;
 }
 
+.uk-notification-message {
+  font-size: medium;
+
+  &.uk-notification-message-primary {
+    color: var(--color) !important;
+  }
+}
+
 .favorite {
   &:hover {
     color: var(--color);
