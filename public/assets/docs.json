@@ -1,160 +1,33 @@
 [
   {
     "id": 1,
-    "name": "Redoc",
-    "group": "OpenApi",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "name": "Hotwheels",
+    "group": "BFF",
+    "description": "Documentação da aplicação responsável por orquestrar as chamadas de serviços e fornecer uma API unificada, otimizada e padronizada para os clientes.",
     "tags": [
-      "redoc",
-      "openapi"
+      "hotwheels",
+      "bff"
     ],
     "reference": {
-      "title": "Redoc",
-      "type": "openapi-redoc",
-      "source": "./assets/docs/my-api.openapi.json"
+      "title": "Hotwheels",
+      "type": "link",
+      "source": "https://mercadobitcoin.github.io/hotwheels"
     },
     "actions": [
       {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
+        "name": "Chat Comunidade",
+        "icon": "comments",
+        "url": "https://chat.google.com/room/AAAAnBZgx9Y?cls=7"
+      },
+      {
+        "name": "Chat Notificações",
+        "icon": "bell",
+        "url": "https://chat.google.com/room/AAAAiw-9upQ?cls=7"
       },
       {
         "name": "GitHub",
         "icon": "github",
-        "url": "https://www.google.com"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Swagger",
-    "group": "OpenApi",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tags": [
-      "swagger",
-      "openapi"
-    ],
-    "reference": {
-      "title": "Swagger",
-      "type": "openapi-swagger",
-      "source": "./assets/docs/my-api.openapi.yaml"
-    },
-    "actions": [
-      {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
-      },
-      {
-        "name": "GitHub",
-        "icon": "github",
-        "url": "https://www.google.com"
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "HTML",
-    "group": "Texto",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tags": [
-      "html"
-    ],
-    "reference": {
-      "title": "HTML",
-      "type": "html",
-      "source": "./assets/docs/my-api/index.html"
-    },
-    "actions": [
-      {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
-      },
-      {
-        "name": "GitHub",
-        "icon": "github",
-        "url": "https://www.google.com"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "name": "Markdown",
-    "group": "Texto",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tags": [
-      "markdown",
-      "texto"
-    ],
-    "reference": {
-      "title": "Markdown",
-      "type": "markdown",
-      "source": "./assets/docs/my-api.md"
-    },
-    "actions": [
-      {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
-      },
-      {
-        "name": "GitHub",
-        "icon": "github",
-        "url": "https://www.google.com"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Iframe",
-    "group": "Web",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tags": [
-      "iframe"
-    ],
-    "reference": {
-      "title": "Iframe",
-      "type": "iframe",
-      "source": "https://getbootstrap.com/docs/5.0/getting-started/introduction/"
-    },
-    "actions": [
-      {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
-      },
-      {
-        "name": "GitHub",
-        "icon": "github",
-        "url": "https://www.google.com"
-      }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Link",
-    "group": "Web",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "tags": [
-      "link"
-    ],
-    "reference": {
-      "title": "Link Web",
-      "source": "https://getbootstrap.com/docs/5.0/getting-started/introduction/",
-      "type": "link"
-    },
-    "actions": [
-      {
-        "name": "Google Chat",
-        "icon": "comment",
-        "url": "https://www.google.com"
-      },
-      {
-        "name": "GitHub",
-        "icon": "github",
-        "url": "https://www.google.com"
+        "url": "https://github.com/mercadobitcoin/hotwheels"
       }
     ]
   }
