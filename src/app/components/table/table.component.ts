@@ -82,7 +82,11 @@ export class TableComponent implements OnInit {
     this.refreshFavoriteIds()
 
     if (this.tabTypeSelected === TabType.Favorite) {
-      this.readFileService.fetchPaginatedByIds(this.page, this.currentPageSize, this.favoriteIds)
+      this.readFileService.fetchPaginatedByIds({
+        page: this.page,
+        pageSize: this.currentPageSize,
+        ids: this.favoriteIds,
+      })
         .subscribe((data: IDocPagination) => {
           this.data = data;
           this.isNotFoundData = this.data.total === 0;
@@ -93,7 +97,10 @@ export class TableComponent implements OnInit {
     }
 
     if (this.tabTypeSelected === TabType.Fixed) {
-      this.readFileService.fetchPaginatedDocsFixed(this.page, this.currentPageSize)
+      this.readFileService.fetchPaginatedDocsFixed({
+        page: this.page,
+        pageSize: this.currentPageSize,
+      })
         .subscribe((data: IDocPagination) => {
           this.data = data;
           this.isNotFoundData = this.data.total === 0;
@@ -103,7 +110,11 @@ export class TableComponent implements OnInit {
       return;
     }
 
-    this.readFileService.fetchPaginatedDocs(this.page, this.currentPageSize, this.searchFilter)
+    this.readFileService.fetchPaginatedDocs({
+      page: this.page,
+      pageSize: this.currentPageSize,
+      filter: this.searchFilter,
+    })
       .subscribe((data: IDocPagination) => {
         this.data = data;
         this.isNotFoundData = this.data.items.length === 0;
