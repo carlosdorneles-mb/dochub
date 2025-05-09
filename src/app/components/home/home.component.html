@@ -13,6 +13,9 @@
     <li [class.uk-active]="tabSelected === TabType.Favorite">
       <a href="#" (click)="selectTab(TabType.Favorite)">Favoritos</a>
     </li>
+    <li [class.uk-active]="tabSelected === TabType.LastVisited">
+      <a href="#" (click)="selectTab(TabType.LastVisited)">Últimas acessadas</a>
+    </li>
   </ul>
 
   <div *ngIf="tabSelected === TabType.All">
@@ -27,6 +30,11 @@
 
   <div *ngIf="tabSelected === TabType.Favorite">
     <p>As suas documentações favoritas ficam salvas aqui.</p>
+    <app-table [tabTypeSelected]="tabSelected"></app-table>
+  </div>
+
+  <div *ngIf="tabSelected === TabType.LastVisited">
+    <p>As últimas documentações que você acessou neste navegador estão salvas aqui.</p>
     <app-table [tabTypeSelected]="tabSelected"></app-table>
   </div>
 </div>

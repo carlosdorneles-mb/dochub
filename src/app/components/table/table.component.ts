@@ -35,6 +35,7 @@ export class TableComponent implements OnInit {
   protected startPageSize = 20;
   protected currentPageSize = 10;
   protected favoriteIds: number[] = [];
+  protected lastVisitedIds: number[] = [];
   protected searchFilter = '';
 
   @Output() searchFilterChange = new EventEmitter<string>();
@@ -80,6 +81,22 @@ export class TableComponent implements OnInit {
 
   loadDocs(): void {
     this.refreshFavoriteIds()
+    this.refreshLastVisitedIds()
+
+    if (this.tabTypeSelected === TabType.LastVisited) {
+      this.readFileService.fetchPaginatedByIds({
+        page: this.page,
+        pageSize: this.currentPageSize,
+        ids: this.lastVisitedIds,
+      })
+        .subscribe((data: IDocPagination) => {
+          this.data = data;
+          this.isNotFoundData = this.data.total === 0;
+          this.isLoadingTable = false;
+          this.isLoadingLoadMore = false;
+        });
+      return;
+    }
 
     if (this.tabTypeSelected === TabType.Favorite) {
       this.readFileService.fetchPaginatedByIds({
@@ -137,6 +154,10 @@ export class TableComponent implements OnInit {
 
   refreshFavoriteIds() {
     this.favoriteIds = this.storageService.getFavoriteIds();
+  }
+
+  refreshLastVisitedIds() {
+    this.lastVisitedIds = this.storageService.getLastVisitedIds();
   }
 
   isFavorite(id: number): boolean {

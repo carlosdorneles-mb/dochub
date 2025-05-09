@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {IDoc, DocTypeEnum} from '@models/doc.model';
 import {ReadFileService} from '@services/read-file.service';
 import {SharedService} from '@services/shared.service';
+import {StorageService} from '@services/storage.service';
 import {NotFoundComponent} from '@components/not-found/not-found.component';
 import {RedocViewerComponent} from '@components/view-doc/viewers/redoc-viewer/redoc-viewer.component';
 import {SwaggerViewerComponent} from '@components/view-doc/viewers/swagger-viewer/swagger-viewer.component';
@@ -40,6 +41,7 @@ export class ViewDocComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private readFileService: ReadFileService,
     private sharedService: SharedService,
+    private storageService: StorageService,
   ) {
   }
 
@@ -47,6 +49,7 @@ export class ViewDocComponent implements OnInit {
     const id = Number(this.activatedRoute.snapshot.params['id']);
 
     this.fetchDoc(id);
+    this.storageService.setLastVisitedId(id);
   }
 
   fetchDoc(id: number): void {

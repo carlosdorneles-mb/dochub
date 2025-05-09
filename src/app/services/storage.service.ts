@@ -39,8 +39,20 @@ export class StorageService {
     }
   }
 
+  setLastVisitedId(id: number): void {
+    const lastVisitedIds = this.getLastVisitedIds();
+    if (!lastVisitedIds.includes(id)) {
+      lastVisitedIds.unshift(id);
+    }
+    this.saveToLocalStorage('lastVisitedIds', lastVisitedIds);
+  }
+
   getFavoriteIds(): number[] {
     return this.getFromLocalStorage('favoriteIds') || [];
+  }
+
+  getLastVisitedIds(): number[] {
+    return this.getFromLocalStorage('lastVisitedIds') || [];
   }
 
   setTabSelected(tab: string): void {
