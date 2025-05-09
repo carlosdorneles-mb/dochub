@@ -39,6 +39,23 @@ export class ReadFileService {
     );
   }
 
+  fetchPaginatedDocsFixed(page: number, pageSize: number): Observable<IDocPagination> {
+    return this.fetchDocs().pipe(
+      map(docs => docs.filter(doc => doc.fixed)),
+      map(docs => {
+        const start = (page - 1) * pageSize;
+        const end = start + pageSize;
+        return {
+          page: page,
+          pageSize: pageSize,
+          pageTotal: Math.ceil(docs.length / pageSize),
+          total: docs.length,
+          items: docs.slice(start, end)
+        };
+      })
+    );
+  }
+
   fetchPaginatedByIds(page: number, pageSize: number, ids: number[]): Observable<IDocPagination> {
     return this.fetchDocs().pipe(
       map(docs => docs.filter(

@@ -92,6 +92,17 @@ export class TableComponent implements OnInit {
       return;
     }
 
+    if (this.tabTypeSelected === TabType.Fixed) {
+      this.readFileService.fetchPaginatedDocsFixed(this.page, this.currentPageSize)
+        .subscribe((data: IDocPagination) => {
+          this.data = data;
+          this.isNotFoundData = this.data.total === 0;
+          this.isLoadingTable = false;
+          this.isLoadingLoadMore = false;
+        });
+      return;
+    }
+
     this.readFileService.fetchPaginatedDocs(this.page, this.currentPageSize, this.searchFilter)
       .subscribe((data: IDocPagination) => {
         this.data = data;

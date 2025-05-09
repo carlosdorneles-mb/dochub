@@ -18,6 +18,7 @@
   <img src="images/not-found.png" alt="Not Found">
   <h3>Nada encontrado</h3>
   <p *ngIf="tabTypeSelected === TabType.Favorite">Você não tem nenhuma documentação nos favoritos.</p>
+  <p *ngIf="tabTypeSelected === TabType.Fixed">Nenhuma documentação foi fixada até o momento.</p>
   <p *ngIf="tabTypeSelected === TabType.All">Nenhuma documentação foi encontrada com o termo informado.</p>
 </div>
 

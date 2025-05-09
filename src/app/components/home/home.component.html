@@ -7,6 +7,9 @@
     <li [class.uk-active]="tabSelected === TabType.All">
       <a href="#" (click)="selectTab(TabType.All)">Todas</a>
     </li>
+    <li [class.uk-active]="tabSelected === TabType.Fixed">
+      <a href="#" (click)="selectTab(TabType.Fixed)">Fixas</a>
+    </li>
     <li [class.uk-active]="tabSelected === TabType.Favorite">
       <a href="#" (click)="selectTab(TabType.Favorite)">Favoritos</a>
     </li>
@@ -14,6 +17,11 @@
 
   <div *ngIf="tabSelected === TabType.All">
     <p>Todas as documentações reunidas em um só lugar.</p>
+    <app-table [tabTypeSelected]="tabSelected"></app-table>
+  </div>
+
+  <div *ngIf="tabSelected === TabType.Fixed">
+    <p>As principais documentações ficam disponíveis aqui.</p>
     <app-table [tabTypeSelected]="tabSelected"></app-table>
   </div>
 

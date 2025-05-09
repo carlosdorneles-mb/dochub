@@ -51,12 +51,13 @@ faça a inclusão diretamente no arquivo `public/assets/docs.json` e abra um PR 
 ### Descrição dos parâmetros
 
 - **id**: Identificador único da documentação. Pode ser qualquer valor, desde que não haja duplicatas no arquivo de settings.
+- **fixed**: Indica se a documentação será exibida na aba de documentações fixadas. Caso não seja informado, o valor padrão será `false`.
 - **name**: Nome da documentação.
 - **group**: Grupo ao qual a documentação pertence.
 - **description**: Descrição da documentação.
 - **tags**: Tags que podem ser utilizadas para filtrar a documentação.
 - **reference**: Objeto que contém informações sobre a documentação:
-  - **title**: Título da documentação.
+  - **title**: Título da documentação. Optional. Se não informado o `name` será considerado.
   - **source**: Caminho do arquivo ou URL externa da documentação.
   - **type**:
     - link: A documentação está disponível em um site externo.

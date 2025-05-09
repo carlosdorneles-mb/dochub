@@ -17,9 +17,10 @@ export interface IDocPagination {
 
 export interface IDoc {
   id: number;
+  fixed: boolean;
   name: string;
-  description: string;
   group: string;
+  description: string;
   tags: string[];
   reference: IReference;
   actions: IAction[];
