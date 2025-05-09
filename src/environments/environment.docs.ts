@@ -1,0 +1,186 @@
+import {DocTypeEnum, IDoc} from '@models/doc.model';
+
+export const environment: IDoc[] = [
+  {
+    id: 1,
+    fixed: true,
+    name: "Hotwheels",
+    group: "BFF",
+    description: "Aplicação responsável por orquestrar as chamadas de serviços e fornecer uma API unificada, otimizada e padronizada para os clientes.",
+    tags: [
+      "hotwheels",
+      "bff"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/hotwheels"
+    },
+    actions: [
+      {
+        name: "Chat Comunidade",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAnBZgx9Y?cls=7"
+      },
+      {
+        name: "Chat Notificações",
+        icon: "bell",
+        url: "https://chat.google.com/room/AAAAiw-9upQ?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/hotwheels"
+      }
+    ]
+  },
+  {
+    id: 2,
+    name: "Staking",
+    group: "Passive Earnings",
+    description: "Aplicação responsável por manipular os dados dos clientes de Renda Passiva.  Documentação com detalhes dos fluxos da aplicação e documentação de API.",
+    tags: [
+      "staking",
+      "passive",
+      "earnings",
+      "api"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/staking"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAgiVj9EI?cls=7"
+      },
+      {
+        name: "Chat notificações",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAA_n7NpP0?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/staking"
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: "Staking Validator",
+    group: "Passive Earnings",
+    description: "Aplicação responsável por manipular a configuração de validadores de Renda Passiva. Documentação com detalhes dos fluxos da aplicação e documentação de API.",
+    tags: [
+      "staking",
+      "validator",
+      "passive",
+      "earnings",
+      "api"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/staking-validator"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAgiVj9EI?cls=7"
+      },
+      {
+        name: "Chat notificações",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAA_n7NpP0?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/staking-validator"
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: "Staking Utils",
+    group: "Lib Python",
+    description: "Biblioteca Python com códigos reutilizáveis para aplicações de Renda Passiva.",
+    tags: [
+      "staking",
+      "utils",
+      "python",
+      "lib",
+      "biblioteca"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/staking-utils"
+    },
+    actions: [
+      {
+        name: "Chat notificações",
+        icon: "bell",
+        url: "https://chat.google.com/room/AAAAWGBHEd8?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/staking-utils"
+      }
+    ]
+  },
+  {
+    id: 5,
+    name: "Criação e configuração de ambiente de Renda Passiva",
+    group: "Passive Earnings",
+    description: "Documentação com o passo a passo de como configurar um ambiente com as aplicações de Renda Passiva.",
+    tags: [
+      "staking",
+      "validator",
+      "passive",
+      "earnings",
+      "confluence"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mb-2tm.atlassian.net/wiki/x/ZQDVO"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAgiVj9EI?cls=7"
+      }
+    ]
+  },
+  {
+    id: 6,
+    name: "Cadastro de novos produtos de Renda Passiva",
+    group: "Passive Earnings",
+    description: "Documentação com passo a passo de como cadastrar um novo produto de Renda Passiva.",
+    tags: [
+      "staking",
+      "validator",
+      "passive",
+      "earnings",
+      "confluence"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mb-2tm.atlassian.net/wiki/x/PgAhP"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAgiVj9EI?cls=7"
+      }
+    ]
+  }
+]

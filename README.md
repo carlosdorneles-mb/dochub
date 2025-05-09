@@ -8,7 +8,7 @@ Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a e
 
 ## Adicionar documentação
 
-Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `public/assets/docs.json`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
+Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `src/environments/environment.docs.ts`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
 
 ```json
 {
@@ -45,8 +45,8 @@ Para adicionar uma nova documentação ao projeto, você deve editar o arquivo d
 }
 ```
 
-Se precisar adicionar uma documentação externa de forma simples, acesse [este link](https://github.com/mercadobitcoin/dochub/edit/main/public/assets/docs.json),
-faça a inclusão diretamente no arquivo `public/assets/docs.json` e abra um PR sem a necessidade de clonar o projeto localmente.
+Se precisar adicionar uma documentação externa de forma simples, acesse [este link](https://github.com/mercadobitcoin/dochub/edit/main/src/environments/environment.docs.ts),
+faça a inclusão diretamente no arquivo `src/environments/environment.docs.ts` e abra um PR sem a necessidade de clonar o projeto localmente.
 
 ### Descrição dos parâmetros
 
@@ -58,7 +58,9 @@ faça a inclusão diretamente no arquivo `public/assets/docs.json` e abra um PR 
 - **tags**: Tags que podem ser utilizadas para filtrar a documentação.
 - **reference**: Objeto que contém informações sobre a documentação:
   - **title**: Título da documentação. Optional. Se não informado o `name` será considerado.
-  - **source**: Caminho do arquivo ou URL externa da documentação.
+  - **source**: Caminho do arquivo ou URL externa da documentação. Se for um arquivo, o mesmo deve ficar dentro de `public/assets/docs/`.
+    - Exemplo de arquivo: `./assets/docs/openapi.json`
+    - Exemplo de URL externa: `https://mercadobitcoin.github.io/hotwheels`
   - **type**:
     - link: A documentação está disponível em um site externo.
     - iframe: A documentação externa será carregada diretamente na página do projeto.

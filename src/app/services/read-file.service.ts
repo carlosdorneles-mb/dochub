@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {environment} from '@env/environment';
 
 import {IDoc, IDocPagination} from '@models/doc.model';
 
@@ -9,11 +9,11 @@ import {IDoc, IDocPagination} from '@models/doc.model';
   providedIn: 'root'
 })
 export class ReadFileService {
-  constructor(private http: HttpClient) {
-  }
-
   private fetchDocs() {
-    return this.http.get<IDoc[]>('assets/docs.json');
+    return new Observable<IDoc[]>(observer => {
+      observer.next(environment.docs);
+      observer.complete();
+    });
   }
 
   fetchPaginatedDocs(
@@ -110,8 +110,8 @@ export class ReadFileService {
   }
 
   private sortDocs(a: IDoc, b: IDoc, order: string, sort: string): number {
-    const fieldA = a[order as keyof IDoc];
-    const fieldB = b[order as keyof IDoc];
+    const fieldA = a[order as keyof IDoc] as string | number;
+    const fieldB = b[order as keyof IDoc] as string | number;
 
     if (sort === 'asc') {
       return fieldA > fieldB ? 1 : fieldA < fieldB ? -1 : 0;

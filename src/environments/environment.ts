@@ -1,6 +1,9 @@
-import {environment as common, IEnvironment} from './environment.common';
+import {IEnvironment} from '@models/environment.model';
+import {environment as docs} from './environment.docs';
 
 export const environment: IEnvironment = {
-  ...common,
   production: true,
+  name: "DocHub",
+  repository: "https://github.com/mercadobitcoin/dochub",
+  docs,
 };

@@ -17,7 +17,7 @@ export interface IDocPagination {
 
 export interface IDoc {
   id: number;
-  fixed: boolean;
+  fixed?: boolean;
   name: string;
   group: string;
   description: string;
@@ -27,7 +27,7 @@ export interface IDoc {
 }
 
 export interface IReference {
-  title: string;
+  title: string | null;
   type: DocTypeEnum;
   source: string;
 }
