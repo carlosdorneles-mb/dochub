@@ -38,6 +38,9 @@ export class TableComponent implements OnInit {
   protected lastVisitedIds: number[] = [];
   protected searchFilter = '';
 
+  protected currentOrder = 'id';
+  protected isAscending = true;
+
   @Output() searchFilterChange = new EventEmitter<string>();
   @Input() tabTypeSelected = this.TabType.All;
 
@@ -117,6 +120,8 @@ export class TableComponent implements OnInit {
       this.readFileService.fetchPaginatedDocsFixed({
         page: this.page,
         pageSize: this.currentPageSize,
+        order: this.currentOrder,
+        sort: this.isAscending ? 'asc' : 'desc',
       })
         .subscribe((data: IDocPagination) => {
           this.data = data;
@@ -131,6 +136,8 @@ export class TableComponent implements OnInit {
       page: this.page,
       pageSize: this.currentPageSize,
       filter: this.searchFilter,
+      order: this.currentOrder,
+      sort: this.isAscending ? 'asc' : 'desc',
     })
       .subscribe((data: IDocPagination) => {
         this.data = data;
@@ -166,5 +173,15 @@ export class TableComponent implements OnInit {
 
   toastMessage(message: string) {
     UIkit.notification({message: message, pos: 'top-right', status: 'primary'})
+  }
+
+  sortTable(column: string): void {
+    if (this.currentOrder === column) {
+      this.isAscending = !this.isAscending;
+    } else {
+      this.currentOrder = column;
+      this.isAscending = true;
+    }
+    this.loadDocs();
   }
 }

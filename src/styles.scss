@@ -141,3 +141,8 @@
   padding: 0;
   overflow: hidden;
 }
+
+.sortable {
+  cursor: pointer;
+  user-select: none;
+}
