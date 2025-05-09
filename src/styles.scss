@@ -25,6 +25,10 @@
   border-top-left-radius: 0;
 }
 
+.uk-button-small {
+  font-size: 0.75rem;
+}
+
 .uk-icon-button {
   background: #fff;
   color: var(--color);
@@ -104,6 +108,14 @@
 .uk-tab > .uk-active > a {
   font-weight: bold;
   border-color: var(--color) !important;
+}
+
+.uk-notification-message {
+  font-size: medium;
+
+  &.uk-notification-message-primary {
+    color: var(--color) !important;
+  }
 }
 
 .favorite {

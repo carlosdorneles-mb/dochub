@@ -9,6 +9,8 @@ import {StorageService} from '@services/storage.service';
 import {TabType} from '@models/tab.model';
 import {LoadingComponent} from '@components/loading/loading.component';
 
+declare const UIkit: any;
+
 @Component({
   standalone: true,
   selector: 'app-table',
@@ -33,10 +35,20 @@ export class TableComponent implements OnInit {
   protected startPageSize = 20;
   protected currentPageSize = 10;
   protected favoriteIds: number[] = [];
+  protected searchFilter = '';
 
-  @Input() tabTypeSelected = this.TabType.All;
-  @Input() searchFilter = '';
   @Output() searchFilterChange = new EventEmitter<string>();
+  @Input() tabTypeSelected = this.TabType.All;
+
+  @Input()
+  set searchFilterValue(value: string) {
+    this.searchFilter = value || '';
+    this.onSearchByValue(this.searchFilter);
+  }
+
+  get searchFilterValue(): string {
+    return this.searchFilter;
+  }
 
   constructor(
     private readFileService: ReadFileService,
@@ -57,20 +69,20 @@ export class TableComponent implements OnInit {
     this.currentPageSize = this.startPageSize;  // reset page size
     this.searchFilter = value;
     this.searchFilterChange.emit(value);
-    this.loadIDocs();
+    this.loadDocs();
   }
 
   loadMore(): void {
     this.isLoadingLoadMore = true;
     this.currentPageSize += this.startPageSize;
-    this.loadIDocs();
+    this.loadDocs();
   }
 
-  loadIDocs(): void {
-    this.favoriteIds = this.storageService.getFavoriteIds();
+  loadDocs(): void {
+    this.refreshFavoriteIds()
 
     if (this.tabTypeSelected === TabType.Favorite) {
-      this.readFileService.fetchPaginatedByIds(this.page, this.currentPageSize, this.storageService.getFavoriteIds())
+      this.readFileService.fetchPaginatedByIds(this.page, this.currentPageSize, this.favoriteIds)
         .subscribe((data: IDocPagination) => {
           this.data = data;
           this.isNotFoundData = this.data.total === 0;
@@ -80,7 +92,7 @@ export class TableComponent implements OnInit {
       return;
     }
 
-    this.readFileService.fetchPaginatedIDocs(this.page, this.currentPageSize, this.searchFilter)
+    this.readFileService.fetchPaginatedDocs(this.page, this.currentPageSize, this.searchFilter)
       .subscribe((data: IDocPagination) => {
         this.data = data;
         this.isNotFoundData = this.data.items.length === 0;
@@ -90,9 +102,26 @@ export class TableComponent implements OnInit {
   }
 
   managerFavorite(id: number) {
-    if (this.storageService.getFavoriteIds().includes(id)) {
-      return this.storageService.removeFavoriteId(id);
+    if (this.isFavorite(id)) {
+      this.storageService.removeFavoriteId(id);
+      this.toastMessage('Documentação removida dos favoritos');
+    } else {
+      this.storageService.setFavoriteId(id);
+      this.toastMessage('Documentação adicionada aos favoritos');
     }
-    this.storageService.setFavoriteId(id);
+    this.refreshFavoriteIds()
+
+  }
+
+  refreshFavoriteIds() {
+    this.favoriteIds = this.storageService.getFavoriteIds();
+  }
+
+  isFavorite(id: number): boolean {
+    return this.favoriteIds.includes(id);
+  }
+
+  toastMessage(message: string) {
+    UIkit.notification({message: message, pos: 'top-right', status: 'primary'})
   }
 }

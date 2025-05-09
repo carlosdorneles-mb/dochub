@@ -23,10 +23,10 @@ export class SwaggerViewerComponent implements AfterViewInit {
   @Input() data: IDoc = {} as IDoc;
 
   ngAfterViewInit() {
-    this.loadIDoc();
+    this.loadDoc();
   }
 
-  loadIDoc() {
+  loadDoc() {
     const swaggerLink = document.createElement('link');
     const swaggerScript = document.createElement('script');
     const swaggerStandaloneScript = document.createElement('script');

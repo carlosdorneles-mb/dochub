@@ -1,6 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Subject, takeUntil} from 'rxjs';
 import {NgForOf, NgIf} from '@angular/common';
+import {Router} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 import {SharedService} from '@services/shared.service';
 import {IDoc} from '@models/doc.model';
@@ -10,16 +12,22 @@ import {IDoc} from '@models/doc.model';
   selector: 'app-header',
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  data: IDoc | null = null;
   private unsubscribe = new Subject<void>();
 
-  constructor(private sharedService: SharedService) {
+  protected data: IDoc | null = null;
+  protected searchQuery = '';
+
+  constructor(
+    private router: Router,
+    private sharedService: SharedService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -31,5 +39,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  navigateToSearch(): void {
+    this.router.navigate(['/search'], {queryParams: {q: this.searchQuery}});
   }
 }

@@ -36,14 +36,13 @@
     <tbody>
     <tr *ngFor="let item of data.items">
       <td>
-        <a
+          <button
           (click)="managerFavorite(item.id)"
           [class.uk-active]="favoriteIds.includes(item.id)"
-          href="#"
-          class="favorite"
           [attr.uk-tooltip]="favoriteIds.includes(item.id) ? 'Desfavoritar' : 'Favoritar'"
+          class="favorite uk-button uk-button-link"
           uk-icon="star">
-        </a>
+          </button>
       </td>
       <td>{{ item.id }}</td>
       <td><b>{{ item.name }}</b></td>

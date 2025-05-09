@@ -4,7 +4,7 @@
       <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 
         <div class="uk-navbar-left">
-          <a class="uk-navbar-item uk-logo" href="docs/">
+            <a class="uk-navbar-item uk-logo" href="./">
             <img src="images/logo.png" width="150" alt="Logo">
           </a>
         </div>
@@ -14,14 +14,16 @@
             <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
             <a class="uk-navbar-toggle" href uk-search-icon></a>
             <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
-              <form class="uk-search uk-search-navbar uk-width-1-1" action="search/" method="get">
+                <div class="uk-search uk-search-navbar uk-width-1-1">
                 <input
+                        [(ngModel)]="searchQuery"
+                        (keyup.enter)="navigateToSearch()"
                   class="uk-search-input"
                   type="search"
                   placeholder="Buscar documentação"
                   aria-label="Search"
-                  name="q" autofocus>  <!-- eslint-disable-line @angular-eslint/template/no-autofocus -->
-              </form>
+                        autofocus>  <!-- eslint-disable-line @angular-eslint/template/no-autofocus -->
+                </div>
             </div>
           </div>
 

@@ -8,33 +8,67 @@ Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a e
 
 ## Adicionar documentação
 
-Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `settings`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
+Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `public/assets/docs.json`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
 
 ```json
 {
-  "id": "1",
-  "type": "openapi-redoc",
-  "reference": "docs/my-api.openapi.json",
-  "repository": "https://duducp.github.io/dochub",
-  "docTitle": "Documentação OpenAPi Json",
-  "selectOptionTitle": "OpenApi Json"
+  "id": 1,
+  "name": "Hotwheels",
+  "group": "BFF",
+  "description": "Documentação da aplicação responsável por orquestrar as chamadas de serviços e fornecer uma API unificada, otimizada e padronizada para os clientes.",
+  "tags": [
+    "hotwheels",
+    "bff"
+  ],
+  "reference": {
+    "title": "Hotwheels",
+    "type": "link",
+    "source": "https://mercadobitcoin.github.io/hotwheels"
+  },
+  "actions": [
+    {
+      "name": "Chat Comunidade",
+      "icon": "comments",
+      "url": "https://chat.google.com/room/AAAAnBZgx9Y?cls=7"
+    },
+    {
+      "name": "Chat Notificações",
+      "icon": "bell",
+      "url": "https://chat.google.com/room/AAAAiw-9upQ?cls=7"
+    },
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/mercadobitcoin/hotwheels"
+    }
+  ]
 }
 ```
+
+Se precisar adicionar uma documentação externa de forma simples, acesse [este link](https://github.com/mercadobitcoin/dochub/edit/main/public/assets/docs.json),
+faça a inclusão diretamente no arquivo `public/assets/docs.json` e abra um PR sem a necessidade de clonar o projeto localmente.
 
 ### Descrição dos parâmetros
 
 - **id**: Identificador único da documentação. Pode ser qualquer valor, desde que não haja duplicatas no arquivo de settings.
-- **type**: Tipo de documentação que está sendo adicionada:
-  - link: A documentação está disponível em um site externo.
-  - iframe: A documentação externa será carregada diretamente na página do projeto.
-  - openapi-redoc: A documentação será renderizada no Redoc, seguindo o padrão OpenAPI.
-  - openapi-swagger: A documentação será renderizada no Swagger, seguindo o padrão OpenAPI.
-  - markdown: A documentação será renderizada a partir de um arquivo no formato markdown.
-  - html: A documentação será renderizada a partir de um arquivo no formato HTML.
-- **reference**: Link externo da documentação ou caminho do arquivo que será renderizado dentro do projeto.
-- **repository**: Link para acessar o repositório do projeto relacionado à documentação.
-- **docTitle**: Título que será exibido quando a documentação for renderizada no projeto.
-- **selectOptionTitle**: Título que aparecerá no seletor de documentação na página inicial do projeto.
+- **name**: Nome da documentação.
+- **group**: Grupo ao qual a documentação pertence.
+- **description**: Descrição da documentação.
+- **tags**: Tags que podem ser utilizadas para filtrar a documentação.
+- **reference**: Objeto que contém informações sobre a documentação:
+  - **title**: Título da documentação.
+  - **source**: Caminho do arquivo ou URL externa da documentação.
+  - **type**:
+    - link: A documentação está disponível em um site externo.
+    - iframe: A documentação externa será carregada diretamente na página do projeto.
+    - openapi-redoc: A documentação será renderizada no Redoc, seguindo o padrão OpenAPI.
+    - openapi-swagger: A documentação será renderizada no Swagger, seguindo o padrão OpenAPI.
+    - markdown: A documentação será renderizada a partir de um arquivo no formato markdown.
+    - html: A documentação será renderizada a partir de um arquivo no formato HTML.
+- **actions**: Ações que podem ser realizadas com a documentação. Cada ação deve conter:
+  - **name**: Nome da ação.
+  - **icon**: Ícone que será exibido ao lado do nome da ação. Todos os ícones podem ser encontrados [nesse link](https://getuikit.com/docs/icon#library).
+  - **url**: URL que será aberta ao clicar na ação.
 
 ### Atualização automática da documentação
 

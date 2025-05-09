@@ -26,10 +26,10 @@ export class MarkdownViewerComponent implements AfterViewInit {
   @Input() data: IDoc = {} as IDoc;
 
   ngAfterViewInit() {
-    this.loadIDoc();
+    this.loadDoc();
   }
 
-  loadIDoc() {
+  loadDoc() {
     const showdownScript = document.createElement('script');
     showdownScript.src = 'https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js';
     document.body.appendChild(showdownScript);
