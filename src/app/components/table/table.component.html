@@ -4,10 +4,16 @@
     <input
       (input)="onSearchByEvent($event)"
       [value]="searchFilter"
-      class="uk-search-input"
+      class="uk-search-input uk-search-input-border"
       type="search"
       placeholder="Buscar documentação"
       aria-label="Search">
+    <select (change)="onSearchByGroupEvent($event)" class="uk-select uk-form-width-medium uk-search-input-border"
+            aria-label="Filter Group">
+      <option value="">Todos os grupos</option>
+      <option *ngFor="let item of dataGroup" [value]="item" [selected]="groupSelected === item ? item : ''">{{ item }}
+      </option>
+    </select>
   </form>
 </div>
 

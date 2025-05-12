@@ -1,5 +1,9 @@
 <div class="uk-container uk-container-expand uk-margin-top">
   <h1><b>Documentações</b></h1>
-    <app-table [searchFilterValue]="queryFilterValue"
-             (searchFilterChange)="updateQueryString(queryFilterName, $event)"></app-table>
+  <app-table
+    [searchFilterValue]="queryFilterValue"
+    [searchFilterGroupValue]="queryFilterGroupValue"
+    (searchFilterChange)="updateQueryString(queryFilterName, $event)"
+    (searchFilterGroupChange)="updateQueryString(queryFilterGroupName, $event)"
+  ></app-table>
 </div>

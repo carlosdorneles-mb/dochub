@@ -1,7 +1,28 @@
-.uk-search-icon {
-  color: black !important;
+.uk-search {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre os elementos */
+  flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha */
+}
+
+@media (max-width: 600px) {
+  .uk-select {
+    width: 100%; /* Faz o select ocupar toda a largura */
+  }
+}
+
+.uk-search-input {
+  flex: 1; /* Faz o input ocupar o espaço restante */
 }
 
 .uk-search-default {
   width: 100% !important;
+}
+
+.uk-search-icon {
+  color: black !important;
+}
+
+.uk-select {
+  flex-shrink: 0; /* Garante que o select não encolha */
 }

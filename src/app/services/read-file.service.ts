@@ -21,6 +21,7 @@ export class ReadFileService {
       page,
       pageSize,
       filter,
+      group = '',
       order = 'id',
       sort = 'asc',
       randomOrder = false,
@@ -28,6 +29,7 @@ export class ReadFileService {
       page: number;
       pageSize: number;
       filter: string;
+      group: string;
       order?: string;
       sort?: string;
       randomOrder?: boolean;
@@ -36,10 +38,13 @@ export class ReadFileService {
     return this.fetchDocs().pipe(
       map(docs => docs.filter(
         doc =>
-          doc.id.toString().includes(filter)
-          || doc.name.toLowerCase().includes(filter.toLowerCase())
-          || doc.group.toLowerCase().includes(filter.toLowerCase())
-          || doc.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+          (!group || doc.group.toLowerCase() === group.toLowerCase()) &&
+          (
+            doc.id.toString().includes(filter)
+            || doc.name.toLowerCase().includes(filter.toLowerCase())
+            || doc.group.toLowerCase().includes(filter.toLowerCase())
+            || doc.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()))
+          )
       )),
       map(docs => {
         if (randomOrder) {
@@ -106,6 +111,12 @@ export class ReadFileService {
   fetchDocById(id: number): Observable<IDoc | undefined> {
     return this.fetchDocs().pipe(
       map(docs => docs.find(doc => doc.id === id))
+    );
+  }
+
+  fetchGroupValues(): Observable<string[]> {
+    return this.fetchDocs().pipe(
+      map(docs => Array.from(new Set(docs.map(doc => doc.group))))
     );
   }
 
