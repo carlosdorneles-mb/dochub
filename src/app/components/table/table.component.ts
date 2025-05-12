@@ -38,20 +38,37 @@ export class TableComponent implements OnInit {
   protected lastVisitedIds: number[] = [];
   protected searchFilter = '';
 
+  protected dataGroup: string[] = [];
+  protected groupSelected = '';
+
   protected currentOrder = 'id';
   protected isAscending = true;
 
-  @Output() searchFilterChange = new EventEmitter<string>();
+  // tab selected
   @Input() tabTypeSelected = this.TabType.All;
+
+  // filter by query
+  @Output() searchFilterChange = new EventEmitter<string>();
 
   @Input()
   set searchFilterValue(value: string) {
-    this.searchFilter = value || '';
-    this.onSearchByValue(this.searchFilter);
+    this.onSearchByValue(value || '');
   }
 
   get searchFilterValue(): string {
     return this.searchFilter;
+  }
+
+  // filter by group
+  @Output() searchFilterGroupChange = new EventEmitter<string>();
+
+  @Input()
+  set searchFilterGroupValue(value: string) {
+    this.onSearchByGroupValue(value || '');
+  }
+
+  get searchFilterGroupValue(): string {
+    return this.groupSelected;
   }
 
   constructor(
@@ -61,6 +78,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadGroups();
     this.onSearchByValue(this.searchFilter);
   }
 
@@ -73,6 +91,17 @@ export class TableComponent implements OnInit {
     this.currentPageSize = this.startPageSize;  // reset page size
     this.searchFilter = value;
     this.searchFilterChange.emit(value);
+    this.loadDocs();
+  }
+
+  onSearchByGroupEvent(event: Event): void {
+    this.onSearchByGroupValue((event.target as HTMLInputElement).value)
+  }
+
+  onSearchByGroupValue(value: string): void {
+    this.isLoadingTable = true;
+    this.groupSelected = value;
+    this.searchFilterGroupChange.emit(value);
     this.loadDocs();
   }
 
@@ -136,6 +165,7 @@ export class TableComponent implements OnInit {
       page: this.page,
       pageSize: this.currentPageSize,
       filter: this.searchFilter,
+      group: this.groupSelected,
       order: this.currentOrder,
       sort: this.isAscending ? 'asc' : 'desc',
     })
@@ -145,6 +175,18 @@ export class TableComponent implements OnInit {
         this.isLoadingTable = false;
         this.isLoadingLoadMore = false;
       });
+  }
+
+  loadGroups(): void {
+    this.readFileService.fetchGroupValues().subscribe({
+      next: (groups: string[]) => {
+        this.dataGroup = groups;
+      },
+      error: (err) => {
+        console.error('Failed to fetch group values:', err);
+        this.toastMessage('Erro ao carregar os grupos');
+      }
+    });
   }
 
   managerFavorite(id: number) {

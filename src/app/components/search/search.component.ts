@@ -14,6 +14,9 @@ export class SearchComponent implements OnInit {
   protected queryFilterName = 'q'
   protected queryFilterValue = ''
 
+  protected queryFilterGroupName = 'group'
+  protected queryFilterGroupValue = ''
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -23,6 +26,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.queryFilterValue = params[this.queryFilterName]
+      this.queryFilterGroupValue = params[this.queryFilterGroupName]
     });
   }
 
