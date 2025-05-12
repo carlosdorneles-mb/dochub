@@ -18,12 +18,12 @@ export const docs: IDoc[] = [
     },
     actions: [
       {
-        name: "Chat Comunidade",
+        name: "Chat comunidade",
         icon: "comments",
         url: "https://chat.google.com/room/AAAAnBZgx9Y?cls=7"
       },
       {
-        name: "Chat Notificações",
+        name: "Chat notificações",
         icon: "bell",
         url: "https://chat.google.com/room/AAAAiw-9upQ?cls=7"
       },
@@ -36,6 +36,34 @@ export const docs: IDoc[] = [
   },
   {
     id: 2,
+    fixed: true,
+    name: "Extrato 2.0",
+    group: "Customer Data",
+    description: "Documentação que explica como funciona o extrato 2.0, como testar e como configurar ambientes de dev-stack.",
+    tags: [
+      "extrato",
+      "statement",
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://docs.google.com/document/d/1pCwGw4Q2QqvwZ6A1h6WtKHXBOTE7JgosJrjHyk7jn70/view?tab=t.0#heading=h.2teebe9grzfv"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAZKBoGSc?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/banco_central"
+      }
+    ]
+  },
+  {
+    id: 3,
     name: "Staking",
     group: "Passive Earnings",
     description: "Aplicação responsável por manipular os dados dos clientes de Renda Passiva.  Documentação com detalhes dos fluxos da aplicação e documentação de API.",
@@ -69,7 +97,7 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     name: "Staking Validator",
     group: "Passive Earnings",
     description: "Aplicação responsável por manipular a configuração de validadores de Renda Passiva. Documentação com detalhes dos fluxos da aplicação e documentação de API.",
@@ -109,11 +137,11 @@ export const docs: IDoc[] = [
     group: "Lib Python",
     description: "Biblioteca Python com códigos reutilizáveis para aplicações de Renda Passiva.",
     tags: [
+      "python",
       "staking",
       "utils",
-      "python",
-      "lib",
-      "biblioteca"
+      "biblioteca",
+      "library"
     ],
     reference: {
       title: null,
@@ -135,6 +163,36 @@ export const docs: IDoc[] = [
   },
   {
     id: 5,
+    name: "Python Metrics",
+    group: "Lib Python",
+    description: "Biblioteca Python que auxilia na configuração e geração de métricas utilizando OpenTelemetry.",
+    tags: [
+      "python",
+      "metrics",
+      "metricas",
+      "biblioteca",
+      "library",
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/mb-python-metrics"
+    },
+    actions: [
+      {
+        name: "Chat notificações",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAA8kihGdI?cls=7"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/mb-python-metrics"
+      }
+    ]
+  },
+  {
+    id: 6,
     name: "Criação e configuração de ambiente de Renda Passiva",
     group: "Passive Earnings",
     description: "Documentação com o passo a passo de como configurar um ambiente com as aplicações de Renda Passiva.",
@@ -159,7 +217,7 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     name: "Cadastro de novos produtos de Renda Passiva",
     group: "Passive Earnings",
     description: "Documentação com passo a passo de como cadastrar um novo produto de Renda Passiva.",
