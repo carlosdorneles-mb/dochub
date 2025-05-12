@@ -132,7 +132,36 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
+    name: "UNI",
+    group: "Web",
+    description: "Aplicação web responsável por gerenciar a interface front-end do Mercado Bitcoin, garantindo uma experiência de usuário eficiente e intuitiva.",
+    tags: [
+      "uni",
+      "frontend",
+      "wow",
+      "web",
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mercadobitcoin.github.io/uni"
+    },
+    actions: [
+      {
+        name: "Chat notificações",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAArT9FSk8?cls=6"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/uni"
+      }
+    ]
+  },
+  {
+    id: 6,
     name: "Staking Utils",
     group: "Lib Python",
     description: "Biblioteca Python com códigos reutilizáveis para aplicações de Renda Passiva.",
@@ -162,7 +191,7 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 5,
+    id: 7,
     name: "Python Metrics",
     group: "Lib Python",
     description: "Biblioteca Python que auxilia na configuração e geração de métricas utilizando OpenTelemetry.",
@@ -192,7 +221,7 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 6,
+    id: 8,
     name: "Criação e configuração de ambiente de Renda Passiva",
     group: "Passive Earnings",
     description: "Documentação com o passo a passo de como configurar um ambiente com as aplicações de Renda Passiva.",
@@ -217,7 +246,7 @@ export const docs: IDoc[] = [
     ]
   },
   {
-    id: 7,
+    id: 9,
     name: "Cadastro de novos produtos de Renda Passiva",
     group: "Passive Earnings",
     description: "Documentação com passo a passo de como cadastrar um novo produto de Renda Passiva.",
