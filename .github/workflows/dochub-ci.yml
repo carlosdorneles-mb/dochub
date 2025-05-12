@@ -1,0 +1,30 @@
+name: Lint and Test
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, ready_for_review ]
+  push:
+    branches: [ main ]
+
+jobs:
+  test-unit:
+    name: "Unit Test and Lint"
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: "package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint
+
+#      - name: Run unit tests
+#        run: npm test -- --watch=false --browsers=ChromeHeadless
