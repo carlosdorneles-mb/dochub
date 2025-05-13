@@ -45,9 +45,6 @@ Para adicionar uma nova documentação ao projeto, você deve editar o arquivo d
 }
 ```
 
-Se precisar adicionar uma documentação externa de forma simples, acesse [este link](https://github.com/mercadobitcoin/dochub/edit/main/src/environments/environment.docs.ts),
-faça a inclusão diretamente no arquivo `src/environments/environment.docs.ts` e abra um PR sem a necessidade de clonar o projeto localmente.
-
 ### Descrição dos parâmetros
 
 - **id**: Identificador único da documentação. Pode ser qualquer valor, desde que não haja duplicatas no arquivo de settings.
@@ -73,7 +70,9 @@ faça a inclusão diretamente no arquivo `src/environments/environment.docs.ts` 
   - **icon**: Ícone que será exibido ao lado do nome da ação. Todos os ícones podem ser encontrados [nesse link](https://getuikit.com/docs/icon#library).
   - **url**: URL que será aberta ao clicar na ação.
 
-### Atualização automática da documentação
+Se você não tiver conhecimento suficiente para adicionar a documentação via abertura de PR, você pode abrir uma [issue](https://github.com/mercadobitcoin/dochub/issues/new?template=add-doc.md) solicitando a inclusão da documentação.
+
+### Atualização automática da documentação (ainda não foi testado)
 
 A idéia é que a documentação seja atualizada automaticamente a partir de um repositório de origem.
 Para isso, é necessário criar um arquivo de documentação no formato OpenAPI ou Markdown e disponibilizá-lo em um repositório.
