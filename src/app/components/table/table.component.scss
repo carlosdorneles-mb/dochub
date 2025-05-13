@@ -3,6 +3,10 @@
   align-items: center;
   gap: 10px; /* Espaçamento entre os elementos */
   flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha */
+
+  span {
+    height: 40px;
+  }
 }
 
 @media (max-width: 600px) {
