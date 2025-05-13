@@ -13,7 +13,7 @@ import {IDoc} from '@models/doc.model';
     <div class="uk-text-center uk-margin-large-top" style="width: 100%;">
       <h3>Uma nova aba foi aberta em seu navegador!</h3>
       <p>
-        Caso a aba não tenha sido aberta, clique no link
+        Caso a aba não tenha sido aberta, clique no link <br/>
         <b><a class="uk-link-muted" [href]="data.reference.source" target="_blank">{{ data.reference.source }}</a></b>
       </p>
       <button [routerLink]="['/']" class="uk-button uk-button-secondary" type="button">

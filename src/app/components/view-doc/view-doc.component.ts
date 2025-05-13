@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CommonModule} from '@angular/common';
 
@@ -30,7 +30,7 @@ import {LoadingComponent} from '@components/loading/loading.component';
   templateUrl: './view-doc.component.html',
   styleUrl: './view-doc.component.scss'
 })
-export class ViewDocComponent implements OnInit {
+export class ViewDocComponent implements OnInit, OnDestroy {
   readonly DocTypeEnum = DocTypeEnum;
 
   protected isNotFound = false;
@@ -50,6 +50,10 @@ export class ViewDocComponent implements OnInit {
 
     this.fetchDoc(id);
     this.storageService.setLastVisitedId(id);
+  }
+
+  ngOnDestroy(): void {
+    this.sharedService.setData(null);
   }
 
   fetchDoc(id: number): void {
