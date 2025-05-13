@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.sharedService.getData$().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
+    this.sharedService.getData().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
       this.data = data;
     });
   }

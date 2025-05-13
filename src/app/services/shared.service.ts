@@ -7,13 +7,13 @@ import {IDoc} from '@models/doc.model';
   providedIn: 'root'
 })
 export class SharedService {
-  private dataSubject: ReplaySubject<IDoc> = new ReplaySubject<IDoc>(1);
+  private dataSubject: ReplaySubject<IDoc | null> = new ReplaySubject<IDoc | null>(1);
 
-  setData(data: IDoc): void {
+  setData(data: IDoc | null): void {
     this.dataSubject.next(data);
   }
 
-  getData$(): Observable<IDoc> {
+  getData(): Observable<IDoc | null> {
     return this.dataSubject.asObservable();
   }
 }
