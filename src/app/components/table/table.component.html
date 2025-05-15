@@ -50,7 +50,7 @@
         Descrição <span
         [attr.uk-icon]="currentOrder === 'description' ? (isAscending ? 'triangle-up' : 'triangle-down') : null"></span>
       </th>
-      <th>Ações</th>
+      <th style="min-width: 205px;">Ações</th>
     </tr>
     </thead>
     <tbody>
@@ -104,6 +104,14 @@
             </div>
           </div>
         </div>
+
+        <button
+          (click)="share(item.id)"
+          class="uk-button uk-button-secondary uk-button-small uk-margin-small-left"
+          type="button"
+          uk-tooltip="Compartilhar"
+          uk-icon="social"
+        ></button>
       </td>
     </tr>
     </tbody>

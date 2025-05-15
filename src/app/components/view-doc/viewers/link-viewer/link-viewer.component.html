@@ -1,0 +1,33 @@
+<div class="uk-text-center uk-margin-large-top" style="width: 100%;">
+  <div class="uk-section">
+    <div class="uk-container">
+      <h1 class="uk-heading-line uk-text-center"><span>{{ data.name }}</span></h1>
+      <p><b>{{ data.group }}</b></p>
+      <p>{{ data.description }}</p>
+
+      <hr class="uk-divider-small uk-margin-medium-bottom uk-margin-medium-top">
+
+      <div>
+        <h4 *ngIf="countdown > 0">A documentação externa será aberta em uma nova aba em {{ countdown }} segundos.</h4>
+        <h4 *ngIf="countdown === 0">Uma nova aba foi aberta em seu navegador!</h4>
+
+        <p>
+          Caso a aba não tenha sido aberta, clique no link <br/>
+          <b>
+            <a
+              class="uk-link-muted"
+              [href]="data.reference.source"
+              target="_blank"
+              (click)="cancelCountdown()"
+            >
+              {{ data.reference.source }}
+            </a>
+          </b>
+        </p>
+        <button [routerLink]="['/']" class="uk-button uk-button-secondary uk-margin-small-top" type="button">
+          Ir para a página inicial
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

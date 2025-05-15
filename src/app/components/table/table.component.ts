@@ -4,12 +4,14 @@ import {RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
 import {IDocPagination} from '@models/doc.model';
+import {TabType} from '@models/tab.model';
+
 import {ReadFileService} from '@services/read-file.service';
 import {StorageService} from '@services/storage.service';
-import {TabType} from '@models/tab.model';
-import {LoadingComponent} from '@components/loading/loading.component';
+import {ToastService} from '@services/toast.service';
+import {ShareService} from '@services/share.service';
 
-declare const UIkit: any;
+import {LoadingComponent} from '@components/loading/loading.component';
 
 @Component({
   standalone: true,
@@ -74,6 +76,8 @@ export class TableComponent implements OnInit {
   constructor(
     private readFileService: ReadFileService,
     private storageService: StorageService,
+    private toastService: ToastService,
+    private shareService: ShareService,
   ) {
   }
 
@@ -184,7 +188,7 @@ export class TableComponent implements OnInit {
       },
       error: (err) => {
         console.error('Failed to fetch group values:', err);
-        this.toastMessage('Erro ao carregar os grupos');
+        this.toastService.message('Erro ao carregar os grupos');
       }
     });
   }
@@ -192,13 +196,12 @@ export class TableComponent implements OnInit {
   managerFavorite(id: number) {
     if (this.isFavorite(id)) {
       this.storageService.removeFavoriteId(id);
-      this.toastMessage('Documentação removida dos favoritos');
+      this.toastService.message('Documentação removida dos favoritos');
     } else {
       this.storageService.setFavoriteId(id);
-      this.toastMessage('Documentação adicionada aos favoritos');
+      this.toastService.message('Documentação adicionada aos favoritos');
     }
     this.refreshFavoriteIds()
-
   }
 
   refreshFavoriteIds() {
@@ -213,10 +216,6 @@ export class TableComponent implements OnInit {
     return this.favoriteIds.includes(id);
   }
 
-  toastMessage(message: string) {
-    UIkit.notification({message: message, pos: 'top-right', status: 'primary'})
-  }
-
   sortTable(column: string): void {
     if (this.currentOrder === column) {
       this.isAscending = !this.isAscending;
@@ -225,5 +224,9 @@ export class TableComponent implements OnInit {
       this.isAscending = true;
     }
     this.loadDocs();
+  }
+
+  share(id: number): void {
+    this.shareService.shareDoc(id);
   }
 }
