@@ -2,31 +2,40 @@ import {AfterViewInit, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 import {IDoc} from '@models/doc.model';
+import {NgIf} from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-link-viewer',
   imports: [
-    RouterLink
+    RouterLink,
+    NgIf
   ],
-  template: `
-    <div class="uk-text-center uk-margin-large-top" style="width: 100%;">
-      <h3>Uma nova aba foi aberta em seu navegador!</h3>
-      <p>
-        Caso a aba não tenha sido aberta, clique no link <br/>
-        <b><a class="uk-link-muted" [href]="data.reference.source" target="_blank">{{ data.reference.source }}</a></b>
-      </p>
-      <button [routerLink]="['/']" class="uk-button uk-button-secondary" type="button">
-        Ir para a página inicial
-      </button>
-    </div>
-  `,
+  templateUrl: './link-viewer.component.html',
   styles: []
 })
 export class LinkViewerComponent implements AfterViewInit {
   @Input() data: IDoc = {} as IDoc;
 
+  protected countdown = 5;
+  private intervalId: any;
+
   ngAfterViewInit() {
-    window.open(this.data.reference.source, '_blank');
+    this.intervalId = setInterval(() => {
+      if (this.countdown > 1) {
+        this.countdown--;
+      } else {
+        this.countdown = 0;
+        clearInterval(this.intervalId);
+        window.open(this.data.reference.source, '_blank');
+      }
+    }, 1000);
+  }
+
+  cancelCountdown() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.countdown = 0;
+    }
   }
 }
