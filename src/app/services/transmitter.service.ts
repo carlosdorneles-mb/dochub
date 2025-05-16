@@ -6,7 +6,7 @@ import {IDoc} from '@models/doc.model';
 @Injectable({
   providedIn: 'root'
 })
-export class SharedService {
+export class TransmitterService {
   private dataSubject: ReplaySubject<IDoc | null> = new ReplaySubject<IDoc | null>(1);
 
   setData(data: IDoc | null): void {

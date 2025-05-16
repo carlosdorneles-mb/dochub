@@ -4,19 +4,19 @@ import {CommonModule} from '@angular/common';
 
 import {IDoc, DocTypeEnum} from '@models/doc.model';
 import {ReadFileService} from '@services/read-file.service';
-import {SharedService} from '@services/shared.service';
+import {TransmitterService} from '@services/transmitter.service';
 import {StorageService} from '@services/storage.service';
-import {NotFoundComponent} from '@components/not-found/not-found.component';
-import {RedocViewerComponent} from '@components/view-doc/viewers/redoc-viewer/redoc-viewer.component';
-import {SwaggerViewerComponent} from '@components/view-doc/viewers/swagger-viewer/swagger-viewer.component';
-import {MarkdownViewerComponent} from '@components/view-doc/viewers/markdown-viewer/markdown-viewer.component';
-import {IframeViewerComponent} from '@components/view-doc/viewers/iframe-viewer/iframe-viewer.component';
-import {LinkViewerComponent} from '@components/view-doc/viewers/link-viewer/link-viewer.component';
-import {LoadingComponent} from '@components/loading/loading.component';
+import {NotFoundComponent} from '@components/pages/not-found/not-found.component';
+import {RedocViewerComponent} from '@components/pages/view/viewers/redoc-viewer/redoc-viewer.component';
+import {SwaggerViewerComponent} from '@components/pages/view/viewers/swagger-viewer/swagger-viewer.component';
+import {MarkdownViewerComponent} from '@components/pages/view/viewers/markdown-viewer/markdown-viewer.component';
+import {IframeViewerComponent} from '@components/pages/view/viewers/iframe-viewer/iframe-viewer.component';
+import {LinkViewerComponent} from '@components/pages/view/viewers/link-viewer/link-viewer.component';
+import {LoadingComponent} from '@components/shared/loading/loading.component';
 
 @Component({
   standalone: true,
-  selector: 'app-view-doc',
+  selector: 'app-view',
   imports: [
     CommonModule,
     NotFoundComponent,
@@ -27,10 +27,10 @@ import {LoadingComponent} from '@components/loading/loading.component';
     LinkViewerComponent,
     LoadingComponent,
   ],
-  templateUrl: './view-doc.component.html',
-  styleUrl: './view-doc.component.scss'
+  templateUrl: './view.component.html',
+  styleUrl: './view.component.scss'
 })
-export class ViewDocComponent implements OnInit, OnDestroy {
+export class ViewComponent implements OnInit, OnDestroy {
   readonly DocTypeEnum = DocTypeEnum;
 
   protected isNotFound = false;
@@ -40,7 +40,7 @@ export class ViewDocComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private readFileService: ReadFileService,
-    private sharedService: SharedService,
+    private transmitterService: TransmitterService,
     private storageService: StorageService,
   ) {
   }
@@ -53,7 +53,7 @@ export class ViewDocComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sharedService.setData(null);
+    this.transmitterService.setData(null);
   }
 
   fetchDoc(id: number): void {
@@ -67,7 +67,7 @@ export class ViewDocComponent implements OnInit, OnDestroy {
         }
 
         this.data = data;
-        this.sharedService.setData(this.data);
+        this.transmitterService.setData(this.data);
       });
   }
 }

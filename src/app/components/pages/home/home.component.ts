@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgIf} from '@angular/common';
 
-import {SectionComponent} from '@components/section/section.component';
-import {FooterComponent} from "@components/footer/footer.component";
-import {TableComponent} from '@components/table/table.component';
+import {SectionComponent} from '@components/shared/section/section.component';
+import {FooterComponent} from "@components/shared/footer/footer.component";
+import {TableComponent} from '@components/shared/table/table.component';
+
 import {StorageService} from '@services/storage.service';
+
 import {TabType} from '@models/tab.model';
 
 @Component({

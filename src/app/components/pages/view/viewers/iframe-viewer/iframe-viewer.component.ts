@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 
 import {IDoc} from '@models/doc.model';
 import {SafePipe} from '@pipes/safe.pipe';
-import {LoadingComponent} from '@components/loading/loading.component';
+import {LoadingComponent} from '@components/shared/loading/loading.component';
 
 @Component({
   standalone: true,

@@ -4,7 +4,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
-import {SharedService} from '@services/shared.service';
+import {TransmitterService} from '@services/transmitter.service';
 import {IDoc} from '@models/doc.model';
 
 @Component({
@@ -26,12 +26,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private sharedService: SharedService,
+    private transmitterService: TransmitterService,
   ) {
   }
 
   ngOnInit(): void {
-    this.sharedService.getData().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
+    this.transmitterService.getData().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
       this.data = data;
     });
   }

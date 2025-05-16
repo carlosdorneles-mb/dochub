@@ -2,7 +2,7 @@ import {Component, CUSTOM_ELEMENTS_SCHEMA, HostListener} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {CommonModule} from '@angular/common';
 
-import {HeaderComponent} from '@components/header/header.component';
+import {HeaderComponent} from '@components/shared/header/header.component';
 
 @Component({
   standalone: true,

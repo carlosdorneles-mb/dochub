@@ -4,20 +4,20 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class StorageService {
-  saveToLocalStorage(key: string, value: any): void {
+  private saveToLocalStorage(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  getFromLocalStorage(key: string): any {
+  private getFromLocalStorage(key: string): any {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
   }
 
-  saveToSessionStorage(key: string, value: any): void {
+  private saveToSessionStorage(key: string, value: any): void {
     sessionStorage.setItem(key, JSON.stringify(value));
   }
 
-  getFromSessionStorage(key: string): any {
+  private getFromSessionStorage(key: string): any {
     const data = sessionStorage.getItem(key);
     return data ? JSON.parse(data) : null;
   }
@@ -39,16 +39,16 @@ export class StorageService {
     }
   }
 
+  getFavoriteIds(): number[] {
+    return this.getFromLocalStorage('favoriteIds') || [];
+  }
+
   setLastVisitedId(id: number): void {
     const lastVisitedIds = this.getLastVisitedIds();
     if (!lastVisitedIds.includes(id)) {
       lastVisitedIds.unshift(id);
     }
     this.saveToLocalStorage('lastVisitedIds', lastVisitedIds);
-  }
-
-  getFavoriteIds(): number[] {
-    return this.getFromLocalStorage('favoriteIds') || [];
   }
 
   getLastVisitedIds(): number[] {

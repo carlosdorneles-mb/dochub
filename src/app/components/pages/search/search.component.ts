@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TableComponent} from '@components/table/table.component';
+
+import {TableComponent} from '@components/shared/table/table.component';
 
 @Component({
   selector: 'app-search',
