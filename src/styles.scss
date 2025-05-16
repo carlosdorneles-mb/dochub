@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* Global Variables */
 :root {
   --color: #ef4723;
   --color-hover: #fde7e2;
@@ -7,14 +6,67 @@
   --color-hover-primary: #b52b0d;
   --color-active-primary: #691908;
   --color-gradient: linear-gradient(to left, #ed5815, var(--color));
+  --button-font-size-small: 0.75rem;
 }
 
+/* Mixins */
+@mixin button-states($bg-color, $text-color) {
+  background: $bg-color;
+  color: $text-color;
+
+  &:hover {
+    background-color: var(--color-hover);
+    color: var(--color);
+  }
+
+  &:active {
+    background-color: var(--color-active);
+    color: var(--color);
+  }
+}
+
+/* Button Styles */
 .uk-button {
   font-weight: 700;
   border-radius: 4px;
   border: 1px solid transparent;
+
+  &-small {
+    font-size: var(--button-font-size-small);
+  }
+
+  &-primary {
+    @include button-states(var(--color), #eaebeb);
+
+    &:hover {
+      background-color: var(--color-hover-primary);
+    }
+
+    &:active {
+      background-color: var(--color-active-primary);
+    }
+  }
+
+  &-secondary {
+    @include button-states(#fff, var(--color));
+    border-color: var(--color);
+  }
+
+  &-tertiary {
+    @include button-states(#fff, var(--color));
+
+    a {
+      color: var(--color) !important;
+    }
+  }
 }
 
+.uk-icon-button {
+  @include button-states(#fff, var(--color));
+  border-color: var(--color);
+}
+
+/* Grouped Styles */
 .uk-button-group > .uk-button {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
@@ -25,76 +77,13 @@
   border-top-left-radius: 0;
 }
 
-.uk-button-small {
-  font-size: 0.75rem;
-}
-
-.uk-icon-button {
-  background: #fff;
-  color: var(--color);
-  border-color: var(--color);
-
-  &:hover {
-    background-color: var(--color-hover);
-    color: var(--color);
-  }
-
-  &:active {
-    background-color: var(--color-active);
-    color: var(--color);
-  }
-}
-
-.uk-button-primary {
-  background: var(--color);
-  color: #eaebeb;
-
-  &:hover {
-    background-color: var(--color-hover-primary);
-  }
-
-  &:active {
-    background-color: var(--color-active-primary);
-  }
-}
-
-.uk-button-secondary {
-  background: #fff;
-  color: var(--color);
-  border-color: var(--color);
-
-  &:hover {
-    background-color: var(--color-hover);
-    color: var(--color);
-  }
-
-  &:active {
-    background-color: var(--color-active);
-    color: var(--color);
-  }
-}
-
-.uk-button-tertiary {
-  background: #fff;
-  color: var(--color);
-
-  a {
-    color: var(--color) !important;
-  }
-
-  &:hover {
-    background-color: var(--color-hover);
-  }
-
-  &:active {
-    background-color: var(--color-active);
-  }
-}
-
-.uk-table-hover tbody tr:hover td, .uk-table-hover tbody tr:hover th {
+/* Table Hover */
+.uk-table-hover tbody tr:hover td,
+.uk-table-hover tbody tr:hover th {
   background-color: var(--color-hover) !important;
 }
 
+/* Search Input */
 .uk-search-input-border {
   border-radius: 8px;
   outline: 1px solid;
@@ -105,11 +94,13 @@
   }
 }
 
+/* Tabs */
 .uk-tab > .uk-active > a {
   font-weight: bold;
   border-color: var(--color) !important;
 }
 
+/* Notifications */
 .uk-notification-message {
   font-size: medium;
 
@@ -118,16 +109,15 @@
   }
 }
 
+/* Favorites */
 .favorite {
-  &:hover {
-    color: var(--color);
-  }
-
+  &:hover,
   &.uk-active {
     color: var(--color);
   }
 }
 
+/* Utility Classes */
 .iframe {
   position: fixed;
   top: 80px;

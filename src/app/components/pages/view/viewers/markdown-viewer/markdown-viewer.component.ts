@@ -1,6 +1,6 @@
 import {Component, Input, AfterViewInit} from '@angular/core';
 import {IDoc} from '@models/doc.model';
-import {LoadingComponent} from '@components/loading/loading.component';
+import {LoadingComponent} from '@components/shared/loading/loading.component';
 
 declare const showdown: any;
 declare const hljs: any;

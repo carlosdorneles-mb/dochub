@@ -11,7 +11,7 @@ import {StorageService} from '@services/storage.service';
 import {ToastService} from '@services/toast.service';
 import {ShareService} from '@services/share.service';
 
-import {LoadingComponent} from '@components/loading/loading.component';
+import {LoadingComponent} from '@components/shared/loading/loading.component';
 
 @Component({
   standalone: true,
@@ -227,6 +227,6 @@ export class TableComponent implements OnInit {
   }
 
   share(id: number): void {
-    this.shareService.shareDoc(id);
+    this.shareService.share(id);
   }
 }
