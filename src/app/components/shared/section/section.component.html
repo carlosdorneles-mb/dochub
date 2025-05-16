@@ -3,16 +3,26 @@
     <h3>O que somos</h3>
 
     <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-      <div>
+      <div [@fadeInOut]>
         <p>DocHub é iniciativa que visa consolidar toda a documentação das APIs dos serviços da nossa empresa em um único repositório acessível e intuitivo.</p>
       </div>
-      <div>
+      <div *ngIf="showMore || isDesktop" [@fadeInOut] [class.uk-hidden]="!showMore && !isDesktop">
         <p>O objetivo é facilitar o acesso à informação, garantir que a documentação esteja sempre atualizada e promover a colaboração entre os usuários.</p>
       </div>
-      <div>
+      <div *ngIf="showMore || isDesktop" [@fadeInOut] [class.uk-hidden]="!showMore && !isDesktop">
         <p>Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a eficiência das equipes e fomentar um ambiente de aprendizado contínuo, tornando a comunicação e o desenvolvimento mais ágeis e eficazes.</p>
       </div>
     </div>
 
+    <div class="uk-margin-top uk-text-center uk-hidden@m" *ngIf="!showMore">
+      <button class="uk-button uk-button-default" (click)="showMore = true">
+        Ler mais <span uk-icon="icon: chevron-down"></span>
+      </button>
+    </div>
+    <div class="uk-margin-top uk-text-center uk-hidden@m" *ngIf="showMore">
+      <button class="uk-button uk-button-default" (click)="showMore = false">
+        Recolher <span uk-icon="icon: chevron-up"></span>
+      </button>
+    </div>
   </div>
 </div>
