@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "update": "ng update",
     "clear:tags": "git tag -l | xargs git tag -d && git fetch --tags",
-    "version": "node scripts/update-manifest-version.js && git add public/manifest.webmanifest",
+    "version": "node scripts/update-manifest-version.js && git add public/manifest.webmanifest && git add src/environments/version.ts",
     "version:major": "npm run clear:tags && npm version major -m \"chore(release): bump version to %s\"",
     "version:minor": "npm run clear:tags && npm version minor -m \"chore(release): bump version to %s\"",
     "version:patch": "npm run clear:tags && npm version patch -m \"chore(release): bump version to %s\"",

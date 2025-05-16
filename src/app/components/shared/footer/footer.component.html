@@ -7,7 +7,10 @@
           <a class="uk-navbar-item uk-logo" href="./">
             <img src="images/logo-mb.png" width="50" alt="Logo" class="logo-rotate" [class.rotate]="rotate">
           </a>
-          <p>© {{ currentYear }} Mercado Bitcoin. Todos os direitos reservados.</p>
+          <p class="uk-text-left">
+            © {{ currentYear }} Mercado Bitcoin. Todos os direitos reservados.
+            <br/><span class="uk-text-meta">v{{ appVersion }}</span>
+          </p>
         </div>
 
         <div class="uk-navbar-right">

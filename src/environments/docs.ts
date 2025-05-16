@@ -1,6 +1,6 @@
 import {DocTypeEnum, IDoc} from '@models/doc.model';
 
-export const environment: IDoc[] = [
+export const docs: IDoc[] = [
   {
     id: 1,
     fixed: true,
