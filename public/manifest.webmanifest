@@ -1,6 +1,7 @@
 {
   "name": "DocHub | MB",
   "short_name": "DocHub | MB",
+  "version": "0.0.0",
   "theme_color": "#ef4723",
   "background_color": "#fafafa",
   "display": "standalone",
