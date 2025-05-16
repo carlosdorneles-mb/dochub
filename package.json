@@ -9,7 +9,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "update": "ng update"
+    "update": "ng update",
+    "clear:tags": "git tag -l | xargs git tag -d && git fetch --tags",
+    "version": "node scripts/update-manifest-version.js && git add public/manifest.webmanifest",
+    "version:major": "npm run clear:tags && npm version major -m \"chore(release): bump version to %s\"",
+    "version:minor": "npm run clear:tags && npm version minor -m \"chore(release): bump version to %s\"",
+    "version:patch": "npm run clear:tags && npm version patch -m \"chore(release): bump version to %s\"",
+    "version:premajor": "npm run clear:tags && npm version premajor -m \"chore(release): bump version to %s\"",
+    "version:preminor": "npm run clear:tags && npm version preminor -m \"chore(release): bump version to %s\"",
+    "version:prepatch": "npm run clear:tags && npm version prepatch -m \"chore(release): bump version to %s\"",
+    "version:prerelease": "npm run clear:tags && npm version prerelease -m \"chore(release): bump version to %s\""
   },
   "private": true,
   "dependencies": {
@@ -36,6 +45,7 @@
     "angular-eslint": "19.4.0",
     "eslint": "^9.22.0",
     "jasmine-core": "~5.6.0",
+    "jsonfile": "^6.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
