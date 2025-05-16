@@ -4,34 +4,32 @@
       <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
 
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="./">
+          <a class="uk-navbar-item uk-logo" href="./" aria-label="Home">
             <img src="images/logo.png" width="150" alt="Logo">
           </a>
         </div>
 
         <div class="uk-navbar-right">
           <div>
-            <!-- eslint-disable-next-line @angular-eslint/template/elements-content -->
-            <a class="uk-navbar-toggle" href uk-search-icon></a>
+            <a class="uk-navbar-toggle" href="#" uk-search-icon aria-label="Search"></a>
             <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
                 <div class="uk-search uk-search-navbar uk-width-1-1">
                 <input
-                        [(ngModel)]="searchQuery"
-                        (keyup.enter)="navigateToSearch()"
+                  [(ngModel)]="searchQuery"
+                  (keyup.enter)="navigateToSearch()"
                   class="uk-search-input"
                   type="search"
                   placeholder="Buscar documentação"
-                  aria-label="Search"
-                        autofocus>  <!-- eslint-disable-line @angular-eslint/template/no-autofocus -->
+                  aria-label="Search" autofocus>  <!-- eslint-disable-line @angular-eslint/template/no-autofocus -->
                 </div>
             </div>
           </div>
 
-          <div *ngIf="data" class="uk-inline">
+          <!-- Desktop Dropdown -->
+          <div *ngIf="data" class="uk-inline uk-visible@m">
             <button class="uk-button uk-button-secondary" type="button">
               {{ data.reference.title || data.name }} <span uk-icon="icon: triangle-down"></span>
             </button>
-
             <div uk-dropdown class="uk-padding-remove">
               <ul class="uk-nav uk-dropdown-nav">
                 <li class="uk-nav-header uk-padding-small" style="width: 100%">{{ data.group }}</li>
@@ -40,14 +38,38 @@
                   class="uk-button uk-button-tertiary uk-button-small"
                   style="width: 100%"
                 >
-                  <a [href]="action.url" target="_blank">
+                  <a [href]="action.url" target="_blank" rel="noopener noreferrer">
                     <span *ngIf="action.icon" [attr.uk-icon]="'icon: ' + action.icon" style="padding-right: 5px"></span>
                     {{ action.name }}
                   </a>
                 </li>
               </ul>
             </div>
+          </div>
 
+          <!-- Mobile Offcanvas -->
+          <div *ngIf="data" class="uk-hidden@m">
+            <button class="uk-button uk-button-secondary" type="button" uk-toggle="target: #sidebar-data">
+              <span uk-icon="icon: menu"></span>
+            </button>
+            <div id="sidebar-data" uk-offcanvas="overlay: true">
+              <div class="uk-offcanvas-bar">
+                <h3>{{ data.reference.title || data.name }}</h3>
+                <div class="uk-text-meta">{{ data.group }}</div>
+                <ul class="uk-nav uk-nav-default">
+                  <li
+                    *ngFor="let action of data.actions"
+                    class="uk-margin-small"
+                  >
+                    <a [href]="action.url" target="_blank" rel="noopener noreferrer">
+                      <span *ngIf="action.icon" [attr.uk-icon]="'icon: ' + action.icon"
+                            style="padding-right: 5px"></span>
+                      {{ action.name }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

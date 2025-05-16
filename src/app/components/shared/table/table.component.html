@@ -105,13 +105,10 @@
           </div>
         </div>
 
-        <button
-          (click)="share(item.id)"
-          class="uk-button uk-button-secondary uk-button-small uk-margin-small-left"
-          type="button"
-          uk-tooltip="Compartilhar"
-          uk-icon="social"
-        ></button>
+        <button (click)="share(item.id)" class="uk-button uk-button-secondary uk-button-small uk-margin-small-left"
+                type="button" uk-tooltip="Compartilhar">
+          <span uk-icon="icon: social"></span>
+        </button>
       </td>
     </tr>
     </tbody>
