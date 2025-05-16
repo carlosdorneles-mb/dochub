@@ -8,7 +8,7 @@ Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a e
 
 ## Adicionar documentação
 
-Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `src/environments/environment.docs.ts`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
+Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `src/environments/docs.ts`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
 
 ```json
 {

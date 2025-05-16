@@ -1,7 +1,10 @@
+const fs = require('fs');
 const jsonfile = require('jsonfile');
 const manifestPath = './public/manifest.webmanifest';
 
 const newVersion = process.env.npm_package_version; // Pega a versão do package.json
+
+fs.writeFileSync('src/environments/version.ts', `export const version = '${newVersion}';\n`);
 
 jsonfile.readFile(manifestPath, (err, manifest) => {
   if (err) {
