@@ -40,3 +40,12 @@ app-root {
     color: #ffffff !important;
   }
 }
+
+/* Animation */
+.logo-rotate {
+  transition: transform 1s;
+}
+
+.logo-rotate.rotate {
+  transform: rotate(360deg);
+}
