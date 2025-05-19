@@ -1,10 +1,8 @@
-name: Lint and Test
+name: 🔘 Lint and Test
 
 on:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
-  push:
-    branches: [ main ]
 
 jobs:
   test-unit:
@@ -14,7 +12,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: "npm"

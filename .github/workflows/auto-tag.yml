@@ -1,0 +1,64 @@
+name: 🔘 Auto tag release
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  auto-tag:
+    runs-on: self-hosted
+
+    if: github.event.pull_request.merged && contains(github.head_ref, 'github-action-release')
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: "package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Git Safe Directory
+        run: git config --global --add safe.directory ${{ github.workspace }}
+
+      - name: Get last version
+        run: |
+          export CURRENT_VERSION=$(git describe --tags --abbrev=0 | xargs)
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_ENV
+        continue-on-error: false  # Stop on error
+
+      - name: Get current version
+        run: |
+          export RELEASE_VERSION=$(node -p "require('./package.json').version")
+          echo "release_version=$RELEASE_VERSION" >> $GITHUB_ENV
+        continue-on-error: false  # Stop on error
+
+      - name: Check if is pre release
+        run: |
+          export IS_PRE_RELEASE=$(node -p "require('./package.json').version.match(/^\d+\.\d+\.\d+(-.+)?$/)[1] ? true : false")
+          echo "is_pre_release=$IS_PRE_RELEASE" >> $GITHUB_ENV
+        continue-on-error: false  # Stop on error
+
+      - name: Generate GH release
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PAT_MB }}
+          script: |
+            const { repo, owner } = context.repo;
+
+            const isPreRelease = ${{env.is_pre_release}} || false;
+
+            const { data } = await github.rest.repos.createRelease({
+              owner,
+              repo,
+              tag_name: '${{env.release_version}}',
+              make_latest: String(!isPreRelease),
+              prerelease: isPreRelease,
+              generate_release_notes: true
+            });

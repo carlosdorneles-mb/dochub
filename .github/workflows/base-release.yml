@@ -1,0 +1,89 @@
+name: 🔘 Base release
+
+on:
+  workflow_call:
+    inputs:
+      release-option:
+        required: true
+        type: string
+
+jobs:
+  base-release:
+    runs-on: self-hosted
+
+    permissions:
+      contents: write       # Permissões para modificar conteúdo
+      pull-requests: write  # Permissão para operações com pull requests
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+          cache-dependency-path: "package-lock.json"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure git identity
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+
+      - name: Configure Variables
+        run: |
+          echo "current_version=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+          npm version ${{ inputs.release-option }} --no-git-tag-version
+          echo "new_version=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
+          git commit -am "commit for rollback"
+          git reset HEAD^1 --hard
+
+      - name: Make release
+        run: |
+          git config --global --add safe.directory ${{ github.workspace }}
+          npm run version:${{ inputs.release-option }}
+        continue-on-error: false  # Stop on error
+
+      - name: Create branch release
+        run: |
+          git checkout -b github-action-release/${{env.new_version}}
+          git push origin github-action-release/${{env.new_version}} --force --tags
+
+      - name: Create Pull Request
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+
+            const { data } = await github.rest.pulls.create({
+              title: 'bump: version ${{ env.current_version }} -> ${{ env.new_version }}',
+              owner,
+              repo,
+              head: 'github-action-release/${{env.new_version}}',
+              base: '${{ github.head_ref || github.ref_name }}',
+              body: 'Created by Github action'
+            });
+
+            const result = await github.rest.pulls.requestReviewers({
+              owner,
+              repo,
+              pull_number: data.number,
+              reviewers: [
+                'carlosdorneles-mb',
+              ]
+            });
+
+            await github.rest.repos.createDispatchEvent({
+              owner,
+              repo,
+              event_type: 'pull_request',
+              client_payload: {
+                action: 'opened',
+                number: data.number
+              }
+            });

@@ -1,14 +1,16 @@
 <p align="center">
-    <img src="public/images/logo.png" alt="DocHub" height="70"/>
+  <a href="https://mercadobitcoin.github.io/dochub/" target="_blank" rel="noopener">
+    <img src="public/images/logo.png" alt="DocHub Logo" height="70"/>
+  </a>
 </p>
 
-DocHub é iniciativa que visa consolidar toda a documentação das APIs dos serviços da nossa empresa em um único repositório acessível e intuitivo. O objetivo é facilitar o acesso à informação, garantir que a documentação esteja sempre atualizada e promover a colaboração entre os usuários.
+DocHub is an initiative aimed at consolidating all API documentation for our company's services into a single, accessible, and intuitive repository. The goal is to facilitate access to information, ensure that documentation is always up to date, and promote collaboration among users.
 
-Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a eficiência das equipes e fomentar um ambiente de aprendizado contínuo, tornando a comunicação e o desenvolvimento mais ágeis e eficazes.
+With DocHub, we seek to improve integration between services, increase team efficiency, and foster a continuous learning environment, making communication and development more agile and effective.
 
-## Adicionar documentação
+## Add documentation
 
-Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `src/environments/docs.ts`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
+To add new documentation to the project, you must edit the `src/environments/docs.ts` file. The inclusion is done by adding an object to the `items` list. See an example below:
 
 ```json
 {
@@ -45,7 +47,7 @@ Para adicionar uma nova documentação ao projeto, você deve editar o arquivo d
 }
 ```
 
-### Descrição dos parâmetros
+### Parameter description
 
 - **id**: Identificador único da documentação. Pode ser qualquer valor, desde que não haja duplicatas no arquivo de settings.
 - **fixed**: Indica se a documentação será exibida na aba de documentações fixadas. Caso não seja informado, o valor padrão será `false`.
@@ -70,15 +72,15 @@ Para adicionar uma nova documentação ao projeto, você deve editar o arquivo d
   - **icon**: Ícone que será exibido ao lado do nome da ação. Todos os ícones podem ser encontrados [nesse link](https://getuikit.com/docs/icon#library).
   - **url**: URL que será aberta ao clicar na ação.
 
-Se você não tiver conhecimento suficiente para adicionar a documentação via abertura de PR, você pode abrir uma [issue](https://github.com/mercadobitcoin/dochub/issues/new?template=add-doc.md) solicitando a inclusão da documentação.
+If you do not have enough knowledge to add the documentation via opening a PR, you can open an [issue](https://github.com/mercadobitcoin/dochub/issues/new?template=add-doc.md) requesting the inclusion of the documentation.
 
-### Atualização automática da documentação (ainda não foi testado)
+### Automatic documentation update (not tested yet)
 
-A idéia é que a documentação seja atualizada automaticamente a partir de um repositório de origem.
-Para isso, é necessário criar um arquivo de documentação no formato OpenAPI ou Markdown e disponibilizá-lo em um repositório.
-A partir disso, é possível criar um fluxo de trabalho no GitHub Actions para sincronizar o arquivo de documentação com o repositório do projeto.
+The idea is that the documentation is automatically updated from a source repository.
+To do this, you need to create a documentation file in OpenAPI or Markdown format and make it available in a repository.
+From there, you can create a workflow in GitHub Actions to synchronize the documentation file with the project repository.
 
-Exemplo de fluxo de trabalho para sincronização de arquivo de documentação:
+Example workflow for synchronizing a documentation file:
 
 ```yaml
 name: Sync Doc and Manage Pull Request
@@ -174,58 +176,72 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+---
+
 ## Development server
+
+Install the dependencies:
+
+```bash
+npm install
+```
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm start
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
+### Building
 
 To build the project run:
 
 ```bash
-ng build
+npm run build
 ```
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+### Running lint
+
+To check your code for linting errors, run:
+
+```bash
+npm run lint
+```
+
+### Running unit tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
-ng test
+npm run test
 ```
 
-## Running end-to-end tests
+### Updating dependencies
 
-For end-to-end (e2e) testing, run:
+To update the dependencies of the project, run:
 
 ```bash
-ng e2e
+npm update
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Generating a new version
 
-## Additional Resources
+It is recommended that the generation of a new version of the application be performed through [GitHub Actions](https://github.com/mercadobitcoin/dochub/actions/workflows/release.yml).
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+You can build a new version of your project locally, but this is not ideal because the build process in GitHub Actions includes running tests and other steps to ensure code quality.
+
+Commands available for generating a version locally:
+
+```bash
+npm run version:major
+npm run version:minor
+npm run version:patch
+npm run version:premajor
+npm run version:preminor
+npm run version:prepatch
+npm run version:prerelease
+```

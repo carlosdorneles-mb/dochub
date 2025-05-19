@@ -1,0 +1,22 @@
+name: ▶️ Release
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        type: choice
+        description: "Select the type of release:"
+        required: true
+        options:
+          - major
+          - minor
+          - patch
+          - premajor
+          - preminor
+          - prepatch
+          - prerelease
+
+jobs:
+  release:
+    uses: ./.github/workflows/base-release.yml
+    with:
+      release-option: "${{github.event.inputs.tag}}"
