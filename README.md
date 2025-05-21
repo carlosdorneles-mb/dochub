@@ -180,7 +180,7 @@ jobs:
 
 ---
 
-## Servidor de desenvolvimento
+## Desenvolvimento
 
 Instale as dependências:
 
@@ -206,7 +206,7 @@ npm run build
 
 Isso irá compilar seu projeto e armazenar os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza sua aplicação para desempenho e velocidade.
 
-### Executando o lint
+### Lint
 
 Para verificar seu código em busca de erros de lint, execute:
 
@@ -214,7 +214,7 @@ Para verificar seu código em busca de erros de lint, execute:
 npm run lint
 ```
 
-### Executando testes unitários
+### Testes unitários
 
 Para executar os testes unitários com o [Karma](https://karma-runner.github.io), utilize o seguinte comando:
 

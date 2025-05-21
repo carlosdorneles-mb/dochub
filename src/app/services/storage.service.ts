@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class StorageService {
   private saveToLocalStorage(key: string, value: any): void {
+    /** The data persists even after closing the browser or tab. It is only removed manually or by code. **/
     localStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -14,6 +15,7 @@ export class StorageService {
   }
 
   private saveToSessionStorage(key: string, value: any): void {
+    /** The data is kept only during the tab/window session. When the tab or window is closed, the data is deleted. **/
     sessionStorage.setItem(key, JSON.stringify(value));
   }
 
@@ -56,10 +58,10 @@ export class StorageService {
   }
 
   setTabSelected(tab: string): void {
-    this.saveToSessionStorage('tabSelected', tab);
+    this.saveToLocalStorage('tabSelected', tab);
   }
 
   getTabSelected(): string {
-    return this.getFromSessionStorage('tabSelected');
+    return this.getFromLocalStorage('tabSelected');
   }
 }
