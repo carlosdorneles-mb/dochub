@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 
 import {TransmitterService} from '@services/transmitter.service';
 import {IDoc} from '@models/doc.model';
+import {InstallButtonComponent} from '@components/shared/install-button/install-button.component';
 
 @Component({
   standalone: true,
@@ -13,7 +14,8 @@ import {IDoc} from '@models/doc.model';
   imports: [
     NgIf,
     NgForOf,
-    FormsModule
+    FormsModule,
+    InstallButtonComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

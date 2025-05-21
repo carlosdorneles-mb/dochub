@@ -10,6 +10,7 @@
         </div>
 
         <div class="uk-navbar-right">
+          <!-- Desktop Search -->
           <div>
             <a class="uk-navbar-toggle" href="#" uk-search-icon aria-label="Search"></a>
             <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
@@ -24,6 +25,9 @@
                 </div>
             </div>
           </div>
+
+          <!-- Install App -->
+          <app-install-button></app-install-button>
 
           <!-- Desktop Dropdown -->
           <div *ngIf="data" class="uk-inline uk-visible@m">

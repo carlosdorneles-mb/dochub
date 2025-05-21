@@ -59,6 +59,13 @@
       color: var(--color) !important;
     }
   }
+
+  &-transparent {
+    @include button-states(transparent, var(--color));
+    font-size: var(--button-font-size-small);
+    border-color: #fff;
+    color: #fff;
+  }
 }
 
 .uk-icon-button {
