@@ -269,5 +269,28 @@ export const docs: IDoc[] = [
         url: "https://chat.google.com/room/AAAAgiVj9EI?cls=7"
       }
     ]
+  },
+  {
+    id: 10,
+    name: "Sistema de tarifação legado (Balboa)",
+    group: "Pricing",
+    description: "Documentação com todos os detalhes da tabela escalonada e regras de tarifação.",
+    tags: [
+      "pricing",
+      "balboa",
+      "confluence"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mb-2tm.atlassian.net/wiki/spaces/BE/pages/659161094/FAQ"
+    },
+    actions: [
+      {
+        name: "Chat do time",
+        icon: "comments",
+        url: "https://chat.google.com/room/AAAAj1QnFZs/jsHF4qCGMrM/jsHF4qCGMrM?cls=10"
+      }
+    ]
   }
 ]
