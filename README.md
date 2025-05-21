@@ -4,13 +4,13 @@
   </a>
 </p>
 
-DocHub is an initiative aimed at consolidating all API documentation for our company's services into a single, accessible, and intuitive repository. The goal is to facilitate access to information, ensure that documentation is always up to date, and promote collaboration among users.
+DocHub é iniciativa que visa consolidar toda a documentação das APIs dos serviços da nossa empresa em um único repositório acessível e intuitivo. O objetivo é facilitar o acesso à informação, garantir que a documentação esteja sempre atualizada e promover a colaboração entre os usuários.
 
-With DocHub, we seek to improve integration between services, increase team efficiency, and foster a continuous learning environment, making communication and development more agile and effective.
+Com o DocHub, buscamos aprimorar a integração entre os serviços, aumentar a eficiência das equipes e fomentar um ambiente de aprendizado contínuo, tornando a comunicação e o desenvolvimento mais ágeis e eficazes.
 
-## Add documentation
+## Adicionar documentação
 
-To add new documentation to the project, you must edit the `src/environments/docs.ts` file. The inclusion is done by adding an object to the `items` list. See an example below:
+Para adicionar uma nova documentação ao projeto, você deve editar o arquivo de `src/environments/docs.ts`. A inclusão é feita adicionando um objeto à lista de `items`. Veja um exemplo abaixo:
 
 ```json
 {
@@ -47,9 +47,9 @@ To add new documentation to the project, you must edit the `src/environments/doc
 }
 ```
 
-### Parameter description
+### Descrição dos parâmetros
 
-- **id**: Identificador único da documentação. Pode ser qualquer valor, desde que não haja duplicatas no arquivo de settings.
+- **id**: Identificador único da documentação. Deve ser um valor numérico inteiro, desde que não haja duplicidade.
 - **fixed**: Indica se a documentação será exibida na aba de documentações fixadas. Caso não seja informado, o valor padrão será `false`.
 - **name**: Nome da documentação.
 - **group**: Grupo ao qual a documentação pertence.
@@ -72,15 +72,17 @@ To add new documentation to the project, you must edit the `src/environments/doc
   - **icon**: Ícone que será exibido ao lado do nome da ação. Todos os ícones podem ser encontrados [nesse link](https://getuikit.com/docs/icon#library).
   - **url**: URL que será aberta ao clicar na ação.
 
-If you do not have enough knowledge to add the documentation via opening a PR, you can open an [issue](https://github.com/mercadobitcoin/dochub/issues/new?template=add-doc.md) requesting the inclusion of the documentation.
+Se você não tiver conhecimento suficiente para adicionar a documentação abrindo um PR, você pode abrir uma [issue](https://github.com/mercadobitcoin/dochub/issues/new?template=add-doc.md) solicitando a inclusão da documentação.
 
-### Automatic documentation update (not tested yet)
+---
 
-The idea is that the documentation is automatically updated from a source repository.
-To do this, you need to create a documentation file in OpenAPI or Markdown format and make it available in a repository.
-From there, you can create a workflow in GitHub Actions to synchronize the documentation file with the project repository.
+### Atualização automática da documentação (ainda não foi testado)
 
-Example workflow for synchronizing a documentation file:
+A idéia é que a documentação seja atualizada automaticamente a partir de um repositório de origem.
+Para isso, é necessário que o projeto externo tenha um arquivo de documentação no formato OpenAPI (json/yml) ou Markdown (md).
+A partir disso, é possível criar um fluxo de trabalho no GitHub Actions para abrir um PR com o arquivo de documentação.
+
+Exemplo de fluxo de trabalho para sincronização de arquivo de documentação:
 
 ```yaml
 name: Sync Doc and Manage Pull Request
@@ -178,63 +180,63 @@ jobs:
 
 ---
 
-## Development server
+## Servidor de desenvolvimento
 
-Install the dependencies:
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-To start a local development server, run:
+Para iniciar um servidor de desenvolvimento local, execute:
 
 ```bash
 npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Uma vez que o servidor esteja em execução, abra seu navegador e acesse `http://localhost:4200/`. A aplicação será recarregada automaticamente sempre que você modificar qualquer um dos arquivos fonte.
 
-### Building
+### Build
 
-To build the project run:
+Para compilar o projeto, execute:
 
 ```bash
 npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Isso irá compilar seu projeto e armazenar os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza sua aplicação para desempenho e velocidade.
 
-### Running lint
+### Executando o lint
 
-To check your code for linting errors, run:
+Para verificar seu código em busca de erros de lint, execute:
 
 ```bash
 npm run lint
 ```
 
-### Running unit tests
+### Executando testes unitários
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Para executar os testes unitários com o [Karma](https://karma-runner.github.io), utilize o seguinte comando:
 
 ```bash
 npm run test
 ```
 
-### Updating dependencies
+### Atualizando dependências
 
-To update the dependencies of the project, run:
+Para atualizar as dependências do projeto, execute:
 
 ```bash
 npm update
 ```
 
-### Generating a new version
+### Gerando uma nova versão
 
-It is recommended that the generation of a new version of the application be performed through [GitHub Actions](https://github.com/mercadobitcoin/dochub/actions/workflows/release.yml).
+Recomenda-se que a geração de uma nova versão da aplicação seja realizada através do [GitHub Actions](https://github.com/mercadobitcoin/dochub/actions/workflows/release.yml).
 
-You can build a new version of your project locally, but this is not ideal because the build process in GitHub Actions includes running tests and other steps to ensure code quality.
+Você pode gerar uma nova versão do seu projeto localmente, mas isso não é o ideal, pois o processo de build no GitHub Actions inclui a execução de testes e outros passos para garantir a qualidade do código.
 
-Commands available for generating a version locally:
+Comandos disponíveis para gerar uma versão localmente:
 
 ```bash
 npm run version:major
