@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy} from '@angular/core';
 import {RouterLink} from '@angular/router';
 
 import {IDoc} from '@models/doc.model';
@@ -14,7 +14,7 @@ import {NgIf} from '@angular/common';
   templateUrl: './link-viewer.component.html',
   styles: []
 })
-export class LinkViewerComponent implements AfterViewInit {
+export class LinkViewerComponent implements AfterViewInit, OnDestroy {
   @Input() data: IDoc = {} as IDoc;
 
   protected countdown = 5;
@@ -30,6 +30,10 @@ export class LinkViewerComponent implements AfterViewInit {
         window.open(this.data.reference.source, '_blank');
       }
     }, 1000);
+  }
+
+  ngOnDestroy() {
+    this.cancelCountdown();
   }
 
   cancelCountdown() {
