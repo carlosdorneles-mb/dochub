@@ -2,6 +2,9 @@ import {Injectable} from '@angular/core';
 import {ToastService} from '@services/toast.service';
 import {environment} from '@env/environment';
 
+/**
+ * Service to handle sharing functionality.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +12,11 @@ export class ShareService {
   constructor(private toastService: ToastService) {
   }
 
+  /**
+   * Share a document by copying its URL to the clipboard.
+   *
+   * @param id - The ID of the document to share.
+   */
   share(id: number): void {
     const url = `${environment.baseUrl}/docs/${id}`;
     navigator.clipboard.writeText(url).then(() => {

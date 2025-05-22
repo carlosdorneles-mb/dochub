@@ -5,6 +5,9 @@ import {environment} from '@env/environment';
 
 import {IDoc, IDocPagination} from '@models/doc.model';
 
+/**
+ * Service to read and manipulate documentation files.
+ */
 @Injectable({
   providedIn: 'root'
 })
