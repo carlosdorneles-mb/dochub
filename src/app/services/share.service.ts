@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ToastService} from '@services/toast.service';
+import {environment} from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class ShareService {
   }
 
   share(id: number): void {
-    const url = `${window.location.origin}/#/docs/${id}`;
+    const url = `${environment.baseUrl}/docs/${id}`;
     navigator.clipboard.writeText(url).then(() => {
       this.toastService.message("Link para compartilhamento copiado com sucesso!");
     }, () => {
