@@ -12,7 +12,11 @@
     <select (change)="onSearchByGroupEvent($event)" class="uk-select uk-form-width-medium uk-search-input-border"
             aria-label="Filter Group">
       <option value="">Todos os grupos</option>
-      <option *ngFor="let item of dataGroup" [value]="item" [selected]="groupSelected === item ? item : ''">{{ item }}
+      <option
+        *ngFor="let item of GroupEnum | keyvalue"
+        [value]="item.value"
+        [selected]="groupSelected === item.value ? item.value : ''">
+        {{ item.value }}
       </option>
     </select>
   </form>

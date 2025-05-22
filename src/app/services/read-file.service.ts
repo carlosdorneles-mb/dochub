@@ -117,12 +117,6 @@ export class ReadFileService {
     );
   }
 
-  fetchGroupValues(): Observable<string[]> {
-    return this.fetchDocs().pipe(
-      map(docs => Array.from(new Set(docs.map(doc => doc.group))))
-    );
-  }
-
   private sortDocs(a: IDoc, b: IDoc, order: string, sort: string): number {
     const fieldA = a[order as keyof IDoc] as string | number;
     const fieldB = b[order as keyof IDoc] as string | number;

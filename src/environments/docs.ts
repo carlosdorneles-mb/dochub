@@ -1,11 +1,20 @@
 import {DocTypeEnum, IDoc} from '@models/doc.model';
 
+export enum GroupEnum {
+  BFF = 'BFF',
+  CustomerData = 'Customer Data',
+  PassiveEarnings = 'Passive Earnings',
+  WEB = 'WEB',
+  LibPython = 'Lib Python',
+  Pricing = 'Pricing',
+}
+
 export const docs: IDoc[] = [
   {
     id: 1,
     fixed: true,
     name: "Hotwheels",
-    group: "BFF",
+    group: GroupEnum.BFF,
     description: "Aplicação responsável por orquestrar as chamadas de serviços e fornecer uma API unificada, otimizada e padronizada para os clientes.",
     tags: [
       "hotwheels",
@@ -38,7 +47,7 @@ export const docs: IDoc[] = [
     id: 2,
     fixed: true,
     name: "Extrato 2.0",
-    group: "Customer Data",
+    group: GroupEnum.CustomerData,
     description: "Documentação que explica como funciona o extrato 2.0, como testar e como configurar ambientes de dev-stack.",
     tags: [
       "extrato",
@@ -65,7 +74,7 @@ export const docs: IDoc[] = [
   {
     id: 3,
     name: "Staking",
-    group: "Passive Earnings",
+    group: GroupEnum.PassiveEarnings,
     description: "Aplicação responsável por manipular os dados dos clientes de Renda Passiva.  Documentação com detalhes dos fluxos da aplicação e documentação de API.",
     tags: [
       "staking",
@@ -99,7 +108,7 @@ export const docs: IDoc[] = [
   {
     id: 4,
     name: "Staking Validator",
-    group: "Passive Earnings",
+    group: GroupEnum.PassiveEarnings,
     description: "Aplicação responsável por manipular a configuração de validadores de Renda Passiva. Documentação com detalhes dos fluxos da aplicação e documentação de API.",
     tags: [
       "staking",
@@ -134,7 +143,7 @@ export const docs: IDoc[] = [
   {
     id: 5,
     name: "UNI",
-    group: "Web",
+    group: GroupEnum.WEB,
     description: "Aplicação web responsável por gerenciar a interface front-end do Mercado Bitcoin, garantindo uma experiência de usuário eficiente e intuitiva.",
     tags: [
       "uni",
@@ -163,7 +172,7 @@ export const docs: IDoc[] = [
   {
     id: 6,
     name: "Staking Utils",
-    group: "Lib Python",
+    group: GroupEnum.LibPython,
     description: "Biblioteca Python com códigos reutilizáveis para aplicações de Renda Passiva.",
     tags: [
       "python",
@@ -193,7 +202,7 @@ export const docs: IDoc[] = [
   {
     id: 7,
     name: "Python Metrics",
-    group: "Lib Python",
+    group: GroupEnum.LibPython,
     description: "Biblioteca Python que auxilia na configuração e geração de métricas utilizando OpenTelemetry.",
     tags: [
       "python",
@@ -223,7 +232,7 @@ export const docs: IDoc[] = [
   {
     id: 8,
     name: "Criação e configuração de ambiente de Renda Passiva",
-    group: "Passive Earnings",
+    group: GroupEnum.PassiveEarnings,
     description: "Documentação com o passo a passo de como configurar um ambiente com as aplicações de Renda Passiva.",
     tags: [
       "staking",
@@ -248,7 +257,7 @@ export const docs: IDoc[] = [
   {
     id: 9,
     name: "Cadastro de novos produtos de Renda Passiva",
-    group: "Passive Earnings",
+    group: GroupEnum.PassiveEarnings,
     description: "Documentação com passo a passo de como cadastrar um novo produto de Renda Passiva.",
     tags: [
       "staking",
@@ -273,12 +282,14 @@ export const docs: IDoc[] = [
   {
     id: 10,
     name: "Sistema de tarifação legado (Balboa)",
-    group: "Pricing",
+    group: GroupEnum.Pricing,
     description: "Documentação com todos os detalhes da tabela escalonada e regras de tarifação.",
     tags: [
       "pricing",
       "balboa",
-      "confluence"
+      "confluence",
+      "fee",
+      "kyc"
     ],
     reference: {
       title: null,
@@ -290,6 +301,11 @@ export const docs: IDoc[] = [
         name: "Chat do time",
         icon: "comments",
         url: "https://chat.google.com/room/AAAAj1QnFZs/jsHF4qCGMrM/jsHF4qCGMrM?cls=10"
+      },
+      {
+        name: "GitHub",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/kyc-fees"
       }
     ]
   }

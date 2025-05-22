@@ -12,6 +12,7 @@ import {ToastService} from '@services/toast.service';
 import {ShareService} from '@services/share.service';
 
 import {LoadingComponent} from '@components/shared/loading/loading.component';
+import {GroupEnum} from '@env/docs';
 
 @Component({
   standalone: true,
@@ -40,7 +41,6 @@ export class TableComponent implements OnInit {
   protected lastVisitedIds: number[] = [];
   protected searchFilter = '';
 
-  protected dataGroup: string[] = [];
   protected groupSelected = '';
 
   protected currentOrder = 'id';
@@ -82,7 +82,6 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadGroups();
     this.onSearchByValue(this.searchFilter);
   }
 
@@ -181,18 +180,6 @@ export class TableComponent implements OnInit {
       });
   }
 
-  loadGroups(): void {
-    this.readFileService.fetchGroupValues().subscribe({
-      next: (groups: string[]) => {
-        this.dataGroup = groups;
-      },
-      error: (err) => {
-        console.error('Failed to fetch group values:', err);
-        this.toastService.message('Erro ao carregar os grupos');
-      }
-    });
-  }
-
   managerFavorite(id: number) {
     if (this.isFavorite(id)) {
       this.storageService.removeFavoriteId(id);
@@ -229,4 +216,6 @@ export class TableComponent implements OnInit {
   share(id: number): void {
     this.shareService.share(id);
   }
+
+  protected readonly GroupEnum = GroupEnum;
 }
