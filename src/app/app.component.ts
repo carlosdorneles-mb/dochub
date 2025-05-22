@@ -4,6 +4,7 @@ import {CommonModule} from '@angular/common';
 import {SwUpdate} from '@angular/service-worker';
 
 import {HeaderComponent} from '@components/shared/header/header.component';
+import {PushService} from '@services/push.service';
 
 @Component({
   standalone: true,
@@ -20,31 +21,31 @@ import {HeaderComponent} from '@components/shared/header/header.component';
 export class AppComponent {
   showTopButton = false;
 
-  constructor(private swUpdate: SwUpdate) {
+  constructor(private swUpdate: SwUpdate, private push: PushService) {
     this.checkForUpdates();
   }
 
   checkForUpdates() {
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.versionUpdates.subscribe(event => {
-        if (event.type === 'VERSION_READY') {
-          this.sendNotification();
-        }
-      });
+    if (!this.swUpdate.isEnabled) {
+      return;
     }
+
+    this.swUpdate.versionUpdates.subscribe(event => {
+      if (event.type === 'VERSION_READY') {
+        console.log(event);
+        this.sendPushNotification();
+      }
+    });
   }
 
-  sendNotification() {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        const notification = new Notification('Nova versão disponível!', {
-          body: 'Clique para atualizar.',
-          icon: 'icons/icon-72x72.png',
-          requireInteraction: true,
-        });
-        notification.onclick = () => {
-          this.updateApp();
-        };
+  sendPushNotification() {
+    this.push.send({
+      title: 'Nova versão disponível!',
+      message: 'Clique para atualizar.',
+      icon: 'icons/icon-72x72.png',
+      requireInteraction: true,
+      onClick: () => {
+        this.updateApp();
       }
     });
   }
