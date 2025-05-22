@@ -4,6 +4,7 @@ export enum GroupEnum {
   BFF = 'BFF',
   CustomerData = 'Customer Data',
   PassiveEarnings = 'Passive Earnings',
+  CCE = 'CCE',
   WEB = 'WEB',
   LibPython = 'Lib Python',
   Pricing = 'Pricing',
@@ -306,6 +307,53 @@ export const docs: IDoc[] = [
         name: "GitHub",
         icon: "github",
         url: "https://github.com/mercadobitcoin/kyc-fees"
+      }
+    ]
+  },
+  {
+    id: 11,
+    name: "Hub de comunicação",
+    group: GroupEnum.CCE,
+    description: "O hub de comunicação é ecossistema responsável pelos fluxos de notificações para o usuário, sejam elas via email, push ou sininho. O hub é composto por 4 aplicações: Maestro, Mail, Push e Bell.",
+    tags: [
+      "mail",
+      "push",
+      "sininho",
+      "bell",
+      "maestro",
+      "notification",
+      "hub"
+    ],
+    reference: {
+      title: null,
+      type: DocTypeEnum.Link,
+      source: "https://mb-2tm.atlassian.net/wiki/x/FACqI"
+    },
+    actions: [
+      {
+        name: "GitHub (Maestro)",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/maestro"
+      },
+      {
+        name: "GitHub (Enriquecedor)",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/enriquecedor/"
+      },
+      {
+        name: "GitHub (Mail)",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/notification-mail"
+      },
+      {
+        name: "GitHub (Push)",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/notification-push"
+      },
+      {
+        name: "GitHub (Bell)",
+        icon: "github",
+        url: "https://github.com/mercadobitcoin/notification-bell"
       }
     ]
   }
