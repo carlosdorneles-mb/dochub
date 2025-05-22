@@ -75,7 +75,7 @@
       <td>
         <div class="uk-button-group">
           <button
-            [routerLink]="['/docs', item.id ]"
+            (click)="viewDoc($event, item)"
             class="uk-button uk-button-secondary uk-button-small"
             type="button"
             uk-tooltip="Acessar documentação"

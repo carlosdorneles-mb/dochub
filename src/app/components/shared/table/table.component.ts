@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
-import {IDocPagination} from '@models/doc.model';
+import {DocTypeEnum, IDoc, IDocPagination} from '@models/doc.model';
 import {TabType} from '@models/tab.model';
 
 import {ReadFileService} from '@services/read-file.service';
@@ -18,7 +18,6 @@ import {GroupEnum} from '@env/docs';
   standalone: true,
   selector: 'app-table',
   imports: [
-    RouterLink,
     CommonModule,
     FormsModule,
     LoadingComponent,
@@ -27,7 +26,8 @@ import {GroupEnum} from '@env/docs';
   styleUrl: './table.component.scss'
 })
 export class TableComponent implements OnInit {
-  readonly TabType = TabType;
+  protected readonly TabType = TabType;
+  protected readonly GroupEnum = GroupEnum;
 
   protected isLoadingLoadMore = false;
   protected isLoadingTable = true;
@@ -74,6 +74,7 @@ export class TableComponent implements OnInit {
   }
 
   constructor(
+    private router: Router,
     private readFileService: ReadFileService,
     private storageService: StorageService,
     private toastService: ToastService,
@@ -217,5 +218,14 @@ export class TableComponent implements OnInit {
     this.shareService.share(id);
   }
 
-  protected readonly GroupEnum = GroupEnum;
+  viewDoc(event: Event, doc: IDoc) {
+    event.preventDefault();
+
+    if ((event as MouseEvent).ctrlKey && doc.reference.type === DocTypeEnum.Link) {
+      window.open(doc.reference.source, '_blank');
+      return;
+    }
+
+    this.router.navigate([`/docs/${doc.id}`]);
+  }
 }
