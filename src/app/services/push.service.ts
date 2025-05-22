@@ -44,4 +44,28 @@ export class PushService {
       }
     })
   }
+
+  /**
+   * Checks if the user has enabled notifications.
+   *
+   * @returns A boolean indicating whether the user has granted permission for notifications.
+   */
+  isNotificationEnabled(): boolean {
+    return Notification.permission === 'granted';
+  }
+
+  /**
+   * Requests notification permission from the user if not already granted.
+   *
+   * @returns A promise that resolves to `true` if permission is granted, or `false` otherwise.
+   */
+  async requestNotificationPermission(): Promise<boolean> {
+    if (Notification.permission === 'granted') {
+      return Promise.resolve(true);
+    } else if (Notification.permission !== 'denied') {
+      const permission = await Notification.requestPermission();
+      return permission === 'granted';
+    }
+    return Promise.resolve(false);
+  }
 }
