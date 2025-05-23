@@ -20,4 +20,15 @@ export class FooterComponent implements OnInit {
       setTimeout(() => this.rotate = false, 1000); // duração da animação: 1s
     }, 10000); // a cada 10s
   }
+
+  unregisterServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        for (const registration of registrations) {
+          registration.unregister();
+        }
+        document.location.reload();
+      });
+    }
+  }
 }

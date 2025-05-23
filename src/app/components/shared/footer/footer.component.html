@@ -9,7 +9,18 @@
           </a>
           <p class="uk-text-left">
             © {{ currentYear }} Mercado Bitcoin. Todos os direitos reservados.
-            <br/><span class="uk-text-meta">v{{ appVersion }}</span>
+            <br/>
+            <span class="uk-text-meta">
+              v{{ appVersion }}
+              <button
+                uk-icon="icon: refresh; ratio:0.7"
+                style="cursor: pointer; background: none; border: none; padding: 0;"
+                title="Atualizar para a versão mais recente"
+                (click)="unregisterServiceWorker()"
+                aria-label="Atualizar para a versão mais recente"
+                type="button"
+              ></button>
+            </span>
           </p>
         </div>
 
