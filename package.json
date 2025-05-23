@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "update": "ng update",
+    "update": "npx npm-check-updates -u && npm install && npm outdated",
+    "update:angular": "ng update",
     "clear:tags": "git tag -l | xargs git tag -d && git fetch --tags",
     "version": "node scripts/update-manifest-version.js && git add ngsw-config.json && git add public/manifest.webmanifest && git add src/environments/version.ts",
     "version:major": "npm run clear:tags && npm version major -m \"chore(release): bump version to %s\"",
@@ -34,10 +35,10 @@
     "@angular/router": "^19.2.12",
     "@angular/service-worker": "^19.2.12",
     "jquery": "^3.7.1",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "uikit": "^3.23.3",
-    "zone.js": "~0.15.0"
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1",
+    "uikit": "^3.23.7",
+    "zone.js": "~0.15.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.13",
@@ -45,19 +46,20 @@
     "@angular/compiler-cli": "^19.2.12",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@types/jasmine": "~5.1.0",
+    "@types/jasmine": "~5.1.8",
     "angular-eslint": "19.4.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.27.0",
     "husky": "^9.1.7",
-    "jasmine-core": "~5.6.0",
+    "jasmine-core": "~5.7.1",
     "jsonfile": "^6.1.0",
-    "karma": "~6.4.0",
+    "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
+    "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "lint-staged": "^16.0.0",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "8.26.0"
+    "npm-check-updates": "^18.0.1",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "8.32.1"
   }
 }
