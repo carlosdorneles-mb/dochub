@@ -3,6 +3,7 @@ import {RouterOutlet} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {SwUpdate} from '@angular/service-worker';
 
+import {environment} from '@env/environment';
 import {HeaderComponent} from '@components/shared/header/header.component';
 import {PushService} from '@services/push.service';
 
@@ -32,7 +33,6 @@ export class AppComponent {
 
     this.swUpdate.versionUpdates.subscribe(event => {
       if (event.type === 'VERSION_READY') {
-        console.log(event);
         this.sendPushNotification();
       }
     });
@@ -40,8 +40,8 @@ export class AppComponent {
 
   sendPushNotification() {
     this.push.send({
-      title: 'Nova versão disponível!',
-      message: 'Clique para atualizar.',
+      title: environment.name,
+      message: 'Nova versão disponível! Clique para atualizar.',
       icon: 'icons/icon-72x72.png',
       requireInteraction: true,
       onClick: () => {

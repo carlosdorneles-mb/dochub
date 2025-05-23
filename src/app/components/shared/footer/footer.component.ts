@@ -11,8 +11,8 @@ import {environment} from '@env/environment';
 export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();
   repository = environment.repository;
-  rotate = false;
   appVersion = environment.version;
+  rotate = false;
 
   ngOnInit() {
     setInterval(() => {

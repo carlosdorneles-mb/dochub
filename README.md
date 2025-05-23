@@ -224,10 +224,16 @@ npm run test
 
 ### Atualizando dependências
 
-Para atualizar as dependências do projeto, execute:
+Para atualizar as dependências do projeto, com exceção das dependências do Angular, execute o comando abaixo:
 
 ```bash
-npm update
+npm run update
+```
+
+Para verificar se há atualizações disponíveis para o Angular e obter o comando para atualizar, execute:
+
+```bash
+ng update
 ```
 
 ### Gerando uma nova versão

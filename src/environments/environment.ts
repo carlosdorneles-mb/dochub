@@ -5,7 +5,7 @@ import {docs} from './docs';
 export const environment: IEnvironment = {
   production: true,
   version,
-  name: "DocHub",
+  name: "DocHub | MB",
   baseUrl: "https://mercadobitcoin.github.io/dochub/#",
   repository: "https://github.com/mercadobitcoin/dochub",
   docs,

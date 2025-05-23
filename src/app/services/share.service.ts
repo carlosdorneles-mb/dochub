@@ -18,7 +18,7 @@ export class ShareService {
    * @param id - The ID of the document to share.
    */
   share(id: number): void {
-    const url = `${environment.baseUrl}/docs/${id}`;
+    const url = `${environment.baseUrl}/docs/${id}?utm_source=dochub&utm_medium=share`;
     navigator.clipboard.writeText(url).then(() => {
       this.toastService.message("Link para compartilhamento copiado com sucesso!");
     }, () => {
